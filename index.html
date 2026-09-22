@@ -1,334 +1,2046 @@
 <!DOCTYPE html>
-<html lang="ta" class="scroll-smooth">
+<html lang="ta" class="scroll-smooth" data-theme="light">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>அடுத்த தலைமுறை — உண்மைக் குரல் & வணிகச் செய்திகள்</title>
-    
-    <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    
+    <title>அடுத்த தலைமுறை | Adutha Thalaimurai — உண்மையின் தீரக் குரல் | தமிழ் & வணிகச் செய்திகள்</title>
+    <meta name="description" content="அடுத்த தலைமுறை (Adutha Thalaimurai) - தமிழ்நாடு, வணிகம், தங்கம் விலை, அரசியல், ஆன்மிகம், அறிவியல் மற்றும் உலகச் செய்திகள் வழங்கும் முன்னணி தமிழ் இணையதளம்."/>
+    <meta name="keywords" content="அடுத்த தலைமுறை, Adutha Thalaimurai, தமிழ் செய்திகள், Tamil News, தங்கம் விலை சென்னை, தமிழ்நாடு செய்திகள், வணிகச் செய்திகள், ஆன்மிகம்"/>
+    <link rel="icon" type="image/png" href="logo.png"/>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = { 
-            theme: { 
-                extend: { 
-                    colors: { 
-                        primary: "#00185f", 
-                        secondary: "#904d00", 
-                        surface: "#ffffff", 
-                        background: "#f8f9fa", 
-                        "on-surface": "#111827", 
-                        "on-surface-variant": "#4b5563",
-                        "outline-variant": "#e5e7eb"
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: "#0a1945",
+                            blue: "#0e2a7a",
+                            accent: "#1a46b8",
+                            gold: "#f59e0b",
+                            goldDark: "#b45309",
+                            goldLight: "#fef3c7",
+                            emerald: "#065f46",
+                            emeraldLight: "#ecfdf5",
+                            crimson: "#dc2626",
+                            crimsonDark: "#991b1b"
+                        }
                     },
                     fontFamily: {
-                        sans: ['"Anek Tamil"', 'sans-serif'],
+                        tamil: ['"Anek Tamil"', 'sans-serif'],
+                        sans: ['"Inter"', '"Anek Tamil"', 'sans-serif'],
                         serif: ['"Playfair Display"', 'serif']
+                    },
+                    boxShadow: {
+                        'glow-gold': '0 0 20px -3px rgba(245, 158, 11, 0.4)',
+                        'glow-blue': '0 0 25px -3px rgba(14, 42, 122, 0.5)',
+                        'card-hover': '0 12px 28px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08)'
                     }
-                } 
-            } 
+                }
+            }
         };
     </script>
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        .dark ::-webkit-scrollbar-track { background: #0b1329; }
+        ::-webkit-scrollbar-thumb { background: #0e2a7a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+
+        /* Smooth badge pulse */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.04); }
+        }
+        .animate-pulse-glow { animation: pulseGlow 2.5s infinite ease-in-out; }
+
+        /* Line clamp utilities */
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* Reading font scaling */
+        .font-scale-sm { font-size: 0.925rem; }
+        .font-scale-base { font-size: 1rem; }
+        .font-scale-lg { font-size: 1.125rem; }
+
+        /* Ticker transition */
+        .ticker-item { transition: all 0.4s ease-in-out; }
+    </style>
 </head>
-<body class="bg-background font-sans text-on-surface antialiased">
+<body class="bg-[#f6f8fb] dark:bg-[#070d1e] font-tamil text-slate-900 dark:text-slate-100 antialiased transition-colors duration-300 min-h-screen flex flex-col">
 
-    <!-- TOP HEADER BAR -->
-    <header class="w-full bg-white border-b border-outline-variant sticky top-0 z-50 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between text-xs text-on-surface-variant">
-            <div class="flex items-center gap-4">
-                <span class="flex items-center gap-1.5 font-medium">
-                    <span class="material-symbols-outlined text-[15px] text-primary">calendar_today</span>
-                    <span>செவ்வாய், செப்டம்பர் 22, 2026</span>
+    <!-- TOP SUPER-UTILITY BAR -->
+    <div class="w-full bg-[#050e26] text-slate-200 border-b border-white/10 text-xs py-1.5 px-4 sm:px-6 lg:px-8 z-50">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            
+            <!-- Left Info: Date, Tamil Month, Clock, Weather -->
+            <div class="flex items-center flex-wrap gap-3 sm:gap-5 text-[11px] sm:text-xs">
+                <span class="flex items-center gap-1.5 font-medium text-amber-400">
+                    <span class="material-symbols-outlined text-[15px]">calendar_month</span>
+                    <span id="live-date">செவ்வாய், 22 செப்டம்பர் 2026</span>
+                    <span class="hidden md:inline text-slate-400">| புரட்டாசி 06</span>
                 </span>
-                <span class="hidden sm:flex items-center gap-1 font-medium">
-                    <span class="material-symbols-outlined text-[15px] text-secondary">schedule</span>
-                    <span id="live-clock">நேரலை நேரம்...</span>
+                
+                <span class="flex items-center gap-1.5 font-semibold text-slate-300">
+                    <span class="material-symbols-outlined text-[15px] text-amber-400">schedule</span>
+                    <span id="live-clock" class="tracking-wider">16:15:00 பிற்பகல்</span>
                 </span>
+
+                <div class="hidden lg:flex items-center gap-1.5 text-slate-300 bg-white/5 px-2 py-0.5 rounded border border-white/10">
+                    <span class="material-symbols-outlined text-[15px] text-amber-400">partly_cloudy_day</span>
+                    <span>சென்னை 31°C</span>
+                    <span class="text-slate-500">•</span>
+                    <span>மதுரை 33°C</span>
+                </div>
             </div>
-            <div class="flex items-center gap-3 font-semibold">
-                <button class="text-primary hover:underline" type="button">தமிழ்</button>
-                <span class="text-gray-300">|</span>
-                <button class="hover:text-primary transition-colors" type="button">English</button>
-                <a class="bg-primary text-white px-3 py-1 text-xs uppercase tracking-wider rounded transition-colors ml-2" href="#">சேரப் பதிவு செய்க</a>
+
+            <!-- Right Controls: Gold Quick Rate, Font Size, Theme, Language, E-Paper -->
+            <div class="flex items-center gap-3 ml-auto text-[11px] sm:text-xs">
+                <!-- Gold Rate Quick Pill -->
+                <button onclick="openGoldCalculatorModal()" class="hidden sm:flex items-center gap-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded transition">
+                    <span class="material-symbols-outlined text-[14px]">toll</span>
+                    <span>22K தங்கம்: <b>₹14,185/g</b></span>
+                    <span class="text-[10px] bg-amber-500 text-slate-900 font-bold px-1 rounded ml-1">கணக்கிடு</span>
+                </button>
+
+                <!-- Font Sizer (A- / A / A+) -->
+                <div class="flex items-center bg-white/10 rounded px-1.5 py-0.5 border border-white/10">
+                    <span class="text-[10px] text-slate-400 mr-1 hidden md:inline">எழுத்து:</span>
+                    <button onclick="changeFontSize('sm')" class="px-1 hover:text-amber-400 font-bold text-[11px]" title="சிறியது">A-</button>
+                    <button onclick="changeFontSize('base')" class="px-1 hover:text-amber-400 font-bold text-[12px] text-amber-400" title="இயல்பு">A</button>
+                    <button onclick="changeFontSize('lg')" class="px-1 hover:text-amber-400 font-bold text-[13px]" title="பெரியது">A+</button>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleDarkMode()" id="theme-toggle-btn" class="w-7 h-7 flex items-center justify-center rounded bg-white/10 hover:bg-white/20 text-amber-300 transition" title="இரவு/பகல் தோற்றம்">
+                    <span class="material-symbols-outlined text-[16px]" id="theme-icon">dark_mode</span>
+                </button>
+
+                <!-- Bookmarks Counter Button -->
+                <button onclick="toggleBookmarksDrawer()" class="flex items-center gap-1 bg-white/10 hover:bg-white/20 text-slate-200 px-2 py-0.5 rounded transition relative">
+                    <span class="material-symbols-outlined text-[15px] text-amber-400">bookmark</span>
+                    <span class="hidden md:inline">சேமித்தவை</span>
+                    <span id="bookmark-count-badge" class="bg-red-600 text-white text-[10px] px-1 rounded-full font-bold">0</span>
+                </button>
+
+                <!-- E-Paper Badge -->
+                <button onclick="openEpaperModal()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold px-2.5 py-0.5 rounded flex items-center gap-1 shadow-sm transition">
+                    <span class="material-symbols-outlined text-[14px]">newspaper</span>
+                    <span>மின்-இதழ்</span>
+                </button>
             </div>
+
         </div>
+    </div>
 
-        <!-- MAIN BRANDING & LOGO -->
+    <!-- MAIN BRANDING HEADER & MASTHEAD -->
+    <header class="w-full bg-white dark:bg-[#0c1633] border-b border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 flex items-center justify-center bg-primary text-white font-bold text-xl rounded shadow-xs">அ</div>
+                
+                <!-- Brand Title & Official Logo Emblem -->
+                <div class="flex items-center gap-4 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-amber-400 to-blue-600 rounded-full blur-xs opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                        <img src="logo.png" alt="அடுத்த தலைமுறை லோகோ - Adutha Thalaimurai Official Logo" class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full object-contain border-2 border-amber-400 shadow-md bg-[#0a1945] p-0.5 transition-transform group-hover:scale-105"/>
+                    </div>
                     <div>
-                        <h1 class="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">அடுத்த தலைமுறை</h1>
-                        <p class="text-xs text-on-surface-variant uppercase tracking-widest font-medium">உண்மையின் குரல் & வணிகச் செய்திகள்</p>
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-2xl sm:text-4xl font-extrabold text-[#0a1945] dark:text-amber-400 tracking-tight leading-none">
+                                அடுத்த தலைமுறை
+                            </h1>
+                            <span class="bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded tracking-wider uppercase animate-pulse">24x7 நேரலை</span>
+                        </div>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="text-xs sm:text-sm font-bold tracking-widest text-slate-600 dark:text-slate-300 uppercase">ADUTHA THALAIMURAI</span>
+                            <span class="text-slate-400 dark:text-slate-600">•</span>
+                            <span class="text-[11px] sm:text-xs text-brand-goldDark dark:text-amber-400/90 font-semibold italic">உண்மையின் தீரக் குரல் | நடுநிலையான புதிய தலைமுறை ஊடகம்</span>
+                        </div>
                     </div>
                 </div>
-                <div class="w-full md:w-80 relative">
-                    <input class="w-full bg-background font-normal text-sm text-on-surface placeholder:text-gray-400 px-3 py-2 pr-9 rounded border border-outline-variant focus:border-primary focus:outline-none" placeholder="செய்திகளைத் தேடவும்..." type="text"/>
-                    <span class="material-symbols-outlined absolute right-2.5 top-2.5 text-gray-400 text-[18px]">search</span>
+
+                <!-- Live Search & Trending Pills -->
+                <div class="w-full md:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <div class="relative w-full sm:w-72 md:w-80">
+                        <input id="site-search-input" type="text" placeholder="செய்திகள், வணிகம், தங்கம் தேட..." onkeyup="handleSearch(event)" class="w-full bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 text-sm px-3.5 py-2 pr-10 rounded-lg border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-blue dark:focus:ring-amber-400 transition shadow-inner"/>
+                        <button onclick="triggerSearch()" class="absolute right-2.5 top-2.5 text-slate-400 hover:text-brand-blue dark:hover:text-amber-400 transition">
+                            <span class="material-symbols-outlined text-[20px]">search</span>
+                        </button>
+                    </div>
+
+                    <button onclick="openLiveRadioModal()" class="flex items-center justify-center gap-2 bg-[#0e2a7a] hover:bg-[#1a46b8] text-white px-3.5 py-2 rounded-lg text-xs font-bold shadow-md transition shrink-0">
+                        <span class="material-symbols-outlined text-amber-400 text-[18px] animate-pulse">podcasts</span>
+                        <span>AI செய்தி வாசிப்பாளர்</span>
+                    </button>
                 </div>
+
+            </div>
+
+            <!-- TRENDING HASHTAGS RIBBON -->
+            <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-2 overflow-x-auto text-[11px] no-scrollbar">
+                <span class="flex items-center gap-1 font-bold text-red-600 dark:text-red-400 shrink-0 uppercase">
+                    <span class="material-symbols-outlined text-[14px]">trending_up</span> டிரெண்டிங்:
+                </span>
+                <a href="#tamilnadu" class="bg-slate-100 dark:bg-slate-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded-full transition shrink-0">#தமிழக_தொழில்_முதலீடு</a>
+                <a href="#business" class="bg-slate-100 dark:bg-slate-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded-full transition shrink-0">#தங்கம்_விலை_நிலவரம்</a>
+                <a href="#business" class="bg-slate-100 dark:bg-slate-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded-full transition shrink-0">#செமிகண்டக்டர்_மிஷன்</a>
+                <a href="#aanmigam" class="bg-slate-100 dark:bg-slate-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded-full transition shrink-0">#மதுரை_மீனாட்சி_கோயில்</a>
+                <a href="#districts" class="bg-slate-100 dark:bg-slate-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded-full transition shrink-0">#மாவட்ட_செய்திகள்</a>
+                <a href="#cinema" class="bg-slate-100 dark:bg-slate-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded-full transition shrink-0">#சினிமா_விமர்சனம்</a>
             </div>
         </div>
 
-        <!-- NAVIGATION BAR -->
-        <div class="w-full border-t border-outline-variant bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <nav class="flex items-center gap-6 overflow-x-auto py-2.5 text-sm font-bold uppercase tracking-wider">
-                    <a class="text-primary border-b-2 border-primary py-1" href="#">முக்கியச் செய்திகள்</a>
-                    <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="#">தமிழ்நாடு</a>
-                    <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="#">வணிகம் & தங்கம்</a>
-                    <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="#">தேசிய செய்திகள்</a>
-                    <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="#">உலகம்</a>
-                    <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="#">வலைப்பதிவுகள் (Blogs)</a>
-                    <a class="text-on-surface-variant hover:text-primary transition-colors py-1 text-gray-500" href="#aanmigam-section">ஆன்மிகம் (உள் பக்கம்)</a>
-                </nav>
+        <!-- STICKY PRIMARY NAVIGATION BAR (NewsGhuru.in Style) -->
+        <nav class="w-full bg-[#0a1945] text-white sticky top-0 z-40 shadow-lg border-t-2 border-amber-400">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+                
+                <!-- Main Nav Links -->
+                <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1 text-xs sm:text-sm font-bold tracking-wide no-scrollbar">
+                    <a href="#top" class="px-3 py-2 text-amber-400 bg-white/10 rounded flex items-center gap-1 shrink-0">
+                        <span class="material-symbols-outlined text-[16px]">home</span> முகப்பு
+                    </a>
+                    <a href="#tamilnadu" class="px-3 py-2 text-slate-200 hover:text-amber-400 hover:bg-white/5 rounded transition shrink-0">தமிழ்நாடு</a>
+                    <a href="#districts" class="px-3 py-2 text-slate-200 hover:text-amber-400 hover:bg-white/5 rounded transition shrink-0">மாவட்டங்கள்</a>
+                    <a href="#business" class="px-3 py-2 text-slate-200 hover:text-amber-400 hover:bg-white/5 rounded transition shrink-0 flex items-center gap-1">
+                        வணிகம் & தங்கம் <span class="bg-amber-500 text-slate-950 text-[9px] px-1 rounded font-extrabold">HOT</span>
+                    </a>
+                    <a href="#aanmigam" class="px-3 py-2 text-slate-200 hover:text-amber-400 hover:bg-white/5 rounded transition shrink-0 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[15px] text-amber-400">temple_hindu</span> ஆன்மிகம்
+                    </a>
+                    <a href="#editorials" class="px-3 py-2 text-slate-200 hover:text-amber-400 hover:bg-white/5 rounded transition shrink-0">வலைப்பதிவுகள் (Blogs)</a>
+                    <a href="#cinema" class="px-3 py-2 text-slate-200 hover:text-amber-400 hover:bg-white/5 rounded transition shrink-0">சினிமா</a>
+                    <a href="#videos" class="px-3 py-2 text-slate-200 hover:text-amber-400 hover:bg-white/5 rounded transition shrink-0">வீடியோ</a>
+                    <a href="#sports" class="px-3 py-2 text-slate-200 hover:text-amber-400 hover:bg-white/5 rounded transition shrink-0">விளையாட்டு</a>
+                </div>
+
+                <!-- Right Quick CTA -->
+                <div class="hidden md:flex items-center gap-2 pl-4 shrink-0">
+                    <button onclick="openNewsletterModal()" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-1.5 rounded transition flex items-center gap-1 shadow">
+                        <span class="material-symbols-outlined text-[15px]">mail</span> செய்திமடல்
+                    </button>
+                </div>
+
             </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- MAIN CONTENT CONTAINER -->
-    <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
-        
-        <!-- BREAKING NEWS & LIVE GOLD RATE WIDGET BAR -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <!-- Breaking News Ticker -->
-            <div class="lg:col-span-2 bg-primary text-white px-4 py-3 rounded-xl flex items-center gap-3 shadow-xs">
-                <span class="bg-red-600 text-white text-xs font-bold uppercase px-2 py-0.5 rounded animate-pulse shrink-0">செய்தித் துணுக்கு</span>
-                <p class="text-sm truncate">தமிழக அரசு சார்பில் புதிய தொழிற்கல்வி மற்றும் தொழில்நுட்ப உச்சி மாநாடு சென்னையில் தொடங்கப்பட்டது.</p>
-            </div>
-            <!-- Live Gold Price Ticker Widget (Chennai) -->
-            <div class="bg-amber-50 border border-amber-200 text-amber-900 px-4 py-2.5 rounded-xl flex items-center justify-between text-xs shadow-xs">
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-amber-700 text-xl">pishing</span>
-                    <div>
-                        <span class="font-bold block text-amber-900">தங்க விலை (சென்னை):</span>
-                        <span>22 காரட் (1 கிராம்): ₹14,185 | 24 காரட்: ₹15,475</span>
+    <!-- BREAKING NEWS TICKER & COMMODITIES BAR -->
+    <div class="w-full bg-[#071330] border-b border-amber-500/30 text-white py-2 px-4 sm:px-6 lg:px-8 shadow-inner">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+            
+            <!-- Breaking Ticker -->
+            <div class="flex-1 flex items-center gap-3 overflow-hidden">
+                <div class="flex items-center gap-1.5 bg-red-600 text-white text-xs font-extrabold uppercase px-2.5 py-1 rounded shadow-md shrink-0 animate-pulse">
+                    <span class="material-symbols-outlined text-[16px]">campaign</span> பிரேக்கிங்
+                </div>
+                
+                <div class="relative flex-1 overflow-hidden h-6 flex items-center">
+                    <div id="breaking-ticker-text" class="ticker-item text-xs sm:text-sm font-medium text-slate-100 truncate cursor-pointer hover:text-amber-300" onclick="openArticleModal(1)">
+                        தமிழகத்தில் ரூ.45,000 கோடி முதலீட்டில் செமிகண்டக்டர் மற்றும் அதிநவீன தொழில்நுட்ப பெருவழித் திட்டம்: அமைச்சரவை ஒப்புதல்!
                     </div>
                 </div>
-                <span class="text-[10px] bg-amber-200 px-1.5 py-0.5 rounded font-bold text-amber-800">நேரலை</span>
+
+                <!-- Prev / Next Ticker Buttons -->
+                <div class="hidden sm:flex items-center gap-1 shrink-0">
+                    <button onclick="prevBreakingTicker()" class="w-6 h-6 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded text-slate-300" title="முந்தைய செய்தி">
+                        <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+                    </button>
+                    <button onclick="nextBreakingTicker()" class="w-6 h-6 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded text-slate-300" title="அடுத்த செய்தி">
+                        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                    </button>
+                </div>
             </div>
+
+            <!-- Commodities Mini Bar -->
+            <div class="flex items-center gap-3 text-xs bg-black/30 border border-white/10 px-3 py-1 rounded-lg justify-between md:justify-end shrink-0">
+                <div class="flex items-center gap-1.5 text-amber-300 font-semibold cursor-pointer" onclick="openGoldCalculatorModal()">
+                    <span class="material-symbols-outlined text-[15px]">monetization_on</span>
+                    <span>22K: ₹14,185</span>
+                    <span class="text-green-400 text-[10px] font-bold">▲ ₹45</span>
+                </div>
+                <span class="text-slate-600">|</span>
+                <div class="flex items-center gap-1 text-slate-200">
+                    <span>வெள்ளி (1கி): ₹104</span>
+                </div>
+                <span class="text-slate-600 hidden sm:inline">|</span>
+                <div class="hidden sm:flex items-center gap-1 text-slate-200">
+                    <span>பெட்ரோல் (சென்னை): ₹100.75</span>
+                </div>
+            </div>
+
         </div>
+    </div>
 
-        <!-- HERO SECTION: MAIN STORY & BUSINESS TRENDING SIDEBAR -->
-        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <!-- MAIN PAGE WRAPPER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10 flex-1 w-full" id="main-content-container">
+
+        <!-- ========================================================================= -->
+        <!-- 1. HERO SECTION: LEAD STORY + TOP 4 EDITORIAL GRID + TRENDING SIDEBAR -->
+        <!-- ========================================================================= -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start" id="top">
             
-            <!-- Main Featured Story (8 Cols) -->
-            <article class="lg:col-span-8 bg-white p-6 rounded-xl shadow-xs border border-outline-variant space-y-4">
-                <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider">
-                    <span class="text-primary bg-blue-50 px-2.5 py-1 rounded">சிறப்புச் செய்தி</span>
-                    <span class="text-on-surface-variant font-medium">தலைமைச் செயலகம், சென்னை</span>
+            <!-- Lead Featured Story (7 Cols) -->
+            <article class="lg:col-span-7 bg-white dark:bg-[#0f1b3d] rounded-2xl shadow-sm hover:shadow-card-hover border border-slate-200 dark:border-slate-800 overflow-hidden transition duration-300 group flex flex-col justify-between">
+                <div class="relative overflow-hidden h-72 sm:h-96 w-full cursor-pointer" onclick="openArticleModal(1)">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200" alt="Tech Corridor Signing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                    
+                    <div class="absolute top-4 left-4 flex items-center gap-2">
+                        <span class="bg-red-600 text-white font-bold text-xs px-2.5 py-1 rounded shadow">தலைமைச் செய்தி</span>
+                        <span class="bg-[#0a1945]/90 text-amber-400 font-bold text-xs px-2.5 py-1 rounded backdrop-blur-xs border border-amber-400/30">தமிழ்நாடு & முதலீடு</span>
+                    </div>
+
+                    <div class="absolute bottom-4 left-4 right-4 text-white space-y-2">
+                        <span class="text-xs text-amber-300 font-semibold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[15px]">location_on</span> சென்னை தலைமைச் செயலகம் • 25 நிமிடங்களுக்கு முன்
+                        </span>
+                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight hover:text-amber-300 transition-colors">
+                            தமிழகத்தின் உலகளாவிய தொழில்நுட்ப பெருவழித் தடம்: ரூ.45,000 கோடி முதலீட்டுக்கு அமைச்சரவை ஒப்புதல்!
+                        </h2>
+                    </div>
                 </div>
 
-                <h2 class="text-2xl sm:text-3xl font-bold text-on-surface hover:text-primary transition-colors cursor-pointer leading-snug font-serif">
-                    தமிழகத்தின் உலகளாவிய தொழில்நுட்ப பெருவழித் தடம்: ரூ.45,000 கோடி முதலீட்டுக்கு அமைச்சரவை ஒப்புதல்
-                </h2>
+                <div class="p-5 sm:p-6 space-y-3">
+                    <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed line-clamp-3">
+                        தென்னிந்தியாவின் பொருளாதார உள்கட்டமைப்பை அடுத்த தலைமுறைக்குக் கொண்டுசெல்லும் வகையில், கோயம்புத்தூர், திருச்சி மற்றும் மதுரை மண்டலங்களை இணைக்கும் பிரம்மாண்ட செமிகண்டக்டர் மற்றும் AI தரவு மைய முதலீடுகளுக்கு தமிழக அரசு அதிகாரப்பூர்வ ஒப்புதல் வழங்கியுள்ளது.
+                    </p>
 
-                <div class="relative w-full h-72 sm:h-96 overflow-hidden rounded-lg bg-gray-100">
-                    <img class="w-full h-full object-cover hover:scale-102 transition-transform duration-500" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200" alt="Tech Corridor Signing"/>
-                </div>
-
-                <p class="text-on-surface-variant leading-relaxed text-base">
-                    தென்னிந்தியாவின் பொருளாதார கட்டமைப்பை மாற்றிமைக்கும் வகையில், மேம்பட்ட செமிகண்டக்டர் மற்றும் செயற்கை நுண்ணறிவு மையங்களை அமைக்க தமிழக அமைச்சரவை ரூ.45,000 கோடி முதலீட்டிற்கு ஒப்புதல் அளித்துள்ளது. கோயம்புத்தூர், திருச்சி மற்றும் மதுரை மாவட்டங்கள் இந்த அதிநவீன தொழிற்துறையுடன் இணைக்கப்படுகின்றன...
-                </p>
-
-                <div class="pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-on-surface-variant font-medium">
-                    <span>எழுதியவர்: கே. செந்தில் நாதன் • 18 நிமிடங்களுக்கு முன்பு</span>
-                    <span class="flex items-center gap-1 text-primary font-bold"><span class="material-symbols-outlined text-sm">schedule</span> 4 நிமிடம் வாசிப்பு</span>
+                    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-slate-700 dark:text-slate-200">எழுதியவர்: கே. செந்தில் நாதன்</span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-amber-500">schedule</span> 4 நிமிடம் வாசிப்பு</span>
+                        </div>
+                        
+                        <div class="flex items-center gap-2">
+                            <button onclick="bookmarkArticle(1, event)" class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-400 hover:text-amber-500 transition" title="சேமிக்கவும்">
+                                <span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+                            </button>
+                            <button onclick="shareArticle(1, event)" class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-400 hover:text-blue-500 transition" title="பகிரவும்">
+                                <span class="material-symbols-outlined text-[18px]">share</span>
+                            </button>
+                            <button onclick="openArticleModal(1)" class="bg-[#0e2a7a] dark:bg-amber-500 text-white dark:text-slate-950 font-bold px-3 py-1 rounded text-xs hover:opacity-90 transition">
+                                முழுதாகப் படிக்க →
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </article>
 
-            <!-- Trending / Business Sidebar (4 Cols) -->
-            <aside class="lg:col-span-4 bg-white p-5 rounded-xl shadow-xs border border-outline-variant space-y-4">
-                <div class="flex items-center justify-between pb-2 border-b border-outline-variant">
-                    <h3 class="font-bold uppercase tracking-wider text-primary text-sm flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> வணிகம் & முக்கியச் செய்திகள்
+            <!-- Top Stories & Trending Ranking (5 Cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                
+                <!-- Quick Top 3 Visual Cards -->
+                <div class="bg-white dark:bg-[#0f1b3d] rounded-2xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
+                        <h3 class="font-extrabold text-sm sm:text-base text-[#0a1945] dark:text-amber-400 uppercase tracking-wide flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></span> முக்கியச் செய்திகள் & பார்வை
+                        </h3>
+                        <span class="text-xs text-slate-400 font-semibold">இன்றைய தொகுப்பு</span>
+                    </div>
+
+                    <div class="divide-y divide-slate-100 dark:divide-slate-800/80 space-y-3">
+                        
+                        <!-- Story 1 -->
+                        <div class="pt-3 first:pt-0 flex gap-3 cursor-pointer group" onclick="openArticleModal(2)">
+                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=300" alt="Gold rate" class="w-20 h-20 rounded-lg object-cover group-hover:scale-105 transition shrink-0"/>
+                            <div class="space-y-1">
+                                <span class="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/50 px-1.5 py-0.5 rounded">வணிகம் & முதலீடு</span>
+                                <h4 class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-amber-300 leading-snug line-clamp-2">
+                                    சர்வதேச சந்தை நிலவரம்: தங்கம் விலையில் திடீர் ஏற்றம் — நகை வாங்குவோர் கவனிக்க வேண்டியவை!
+                                </h4>
+                                <span class="text-[11px] text-slate-400 flex items-center gap-1">1 மணி நேரத்திற்கு முன்</span>
+                            </div>
+                        </div>
+
+                        <!-- Story 2 -->
+                        <div class="pt-3 flex gap-3 cursor-pointer group" onclick="openArticleModal(3)">
+                            <img src="https://images.unsplash.com/photo-1590055531615-f16d36ffe8ec?auto=format&fit=crop&q=80&w=300" alt="Temple" class="w-20 h-20 rounded-lg object-cover group-hover:scale-105 transition shrink-0"/>
+                            <div class="space-y-1">
+                                <span class="text-[10px] font-bold uppercase text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-1.5 py-0.5 rounded">ஆன்மிகம் & மரபு</span>
+                                <h4 class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-amber-300 leading-snug line-clamp-2">
+                                    மதுரை மீனாட்சி அம்மன் திருக்கோயில் கோபுரங்களின் திராவிடக் கட்டிடக்கலை ரகசியங்கள்
+                                </h4>
+                                <span class="text-[11px] text-slate-400 flex items-center gap-1">2 மணி நேரத்திற்கு முன்</span>
+                            </div>
+                        </div>
+
+                        <!-- Story 3 -->
+                        <div class="pt-3 flex gap-3 cursor-pointer group" onclick="openArticleModal(4)">
+                            <img src="https://images.unsplash.com/photo-1558441719-8b489c6ef2d1?auto=format&fit=crop&q=80&w=300" alt="Electric vehicle" class="w-20 h-20 rounded-lg object-cover group-hover:scale-105 transition shrink-0"/>
+                            <div class="space-y-1">
+                                <span class="text-[10px] font-bold uppercase text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 px-1.5 py-0.5 rounded">தொழில்நுட்பம்</span>
+                                <h4 class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-amber-300 leading-snug line-clamp-2">
+                                    ஓசூர் மற்றும் கோயம்புத்தூர் மின் வாகன மையங்கள் மூலம் சர்வதேச ஏற்றுமதி புதிய உச்சம்
+                                </h4>
+                                <span class="text-[11px] text-slate-400 flex items-center gap-1">3 மணி நேரத்திற்கு முன்</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Most Read / Trending 1 to 5 List -->
+                <div class="bg-gradient-to-br from-[#0a1945] to-[#050e26] text-white rounded-2xl p-5 border border-amber-500/30 shadow-md space-y-3">
+                    <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                        <span class="text-amber-400 font-extrabold text-sm flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[18px]">local_fire_department</span> அதிகம் வாசிக்கப்பட்டவை (Top 5)
+                        </span>
+                        <span class="text-[11px] text-slate-400">இன்று</span>
+                    </div>
+
+                    <div class="space-y-2.5 text-xs">
+                        <div class="flex items-start gap-3 p-1.5 rounded hover:bg-white/5 cursor-pointer transition" onclick="openArticleModal(1)">
+                            <span class="text-lg font-extrabold text-amber-400 w-5">01</span>
+                            <p class="font-semibold text-slate-200 hover:text-amber-300 leading-snug">தமிழக அமைச்சரவையின் ரூ.45,000 கோடி ஹைடெக் முதலீடு அறிக்கை</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-1.5 rounded hover:bg-white/5 cursor-pointer transition" onclick="openArticleModal(2)">
+                            <span class="text-lg font-extrabold text-slate-400 w-5">02</span>
+                            <p class="font-semibold text-slate-200 hover:text-amber-300 leading-snug">இன்றைய தங்கம் மற்றும் வெள்ளி விலை முழு பட்டியல் (சென்னை மண்டலம்)</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-1.5 rounded hover:bg-white/5 cursor-pointer transition" onclick="openArticleModal(5)">
+                            <span class="text-lg font-extrabold text-slate-400 w-5">03</span>
+                            <p class="font-semibold text-slate-200 hover:text-amber-300 leading-snug">புரட்டாசி மாத விரத சிறப்புகள் & கோயில் நடை திறப்பு நேரங்கள்</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-1.5 rounded hover:bg-white/5 cursor-pointer transition" onclick="openArticleModal(6)">
+                            <span class="text-lg font-extrabold text-slate-400 w-5">04</span>
+                            <p class="font-semibold text-slate-200 hover:text-amber-300 leading-snug">ஆசிய கோப்பை கிரிக்கெட்: தமிழக வீரர்களின் அதிரடி ஆட்டம்</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-1.5 rounded hover:bg-white/5 cursor-pointer transition" onclick="openArticleModal(7)">
+                            <span class="text-lg font-extrabold text-slate-400 w-5">05</span>
+                            <p class="font-semibold text-slate-200 hover:text-amber-300 leading-snug">தமிழ் சினிமாவில் புதிய அலை: இந்த வார ஓடிடி மற்றும் தியேட்டர் ரிலீஸ்</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 2. LIVE COMMODITY & GOLD CALCULATOR INTERACTIVE BANNER -->
+        <!-- ========================================================================= -->
+        <section class="bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 rounded-2xl p-6 text-slate-950 shadow-lg relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 opacity-15 pointer-events-none">
+                <span class="material-symbols-outlined text-[180px]">toll</span>
+            </div>
+
+            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+                <div class="space-y-2 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-slate-950 text-amber-300 text-xs font-extrabold px-3 py-1 rounded-full uppercase">
+                        <span class="material-symbols-outlined text-[14px]">query_stats</span> சென்னை தங்கம் & வெள்ளி நேரலை சந்தை
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-black tracking-tight text-slate-950">
+                        22 காரட் & 24 காரட் தங்கம் விலை உடனடி கணக்கீட்டு மையம்
+                    </h3>
+                    <p class="text-xs sm:text-sm font-medium text-slate-900 max-w-xl">
+                        ஜி.எஸ்.டி (3%) மற்றும் செய்கூலி சேதாரம் உத்தேசக் கட்டணத்துடன் உங்கள் தங்கம் மற்றும் நகைகளுக்கான உண்மையான மதிப்பை நொடியில் கணக்கிடுங்கள்.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <div class="bg-slate-950/90 text-white px-4 py-2.5 rounded-xl text-center border border-slate-800">
+                        <span class="text-[10px] text-amber-400 font-bold block uppercase">22K தங்கம் (1 சவரன் / 8g)</span>
+                        <span class="text-base sm:text-lg font-black text-white">₹1,13,480</span>
+                    </div>
+                    <div class="bg-slate-950/90 text-white px-4 py-2.5 rounded-xl text-center border border-slate-800">
+                        <span class="text-[10px] text-amber-400 font-bold block uppercase">24K தூய தங்கம் (1g)</span>
+                        <span class="text-base sm:text-lg font-black text-white">₹15,475</span>
+                    </div>
+                    <button onclick="openGoldCalculatorModal()" class="bg-slate-950 hover:bg-slate-900 text-amber-400 font-extrabold px-5 py-3 rounded-xl text-xs sm:text-sm shadow-xl flex items-center gap-2 transition hover:scale-105">
+                        <span class="material-symbols-outlined text-[18px]">calculate</span>
+                        <span>விலையைக் கணக்கிடு →</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 3. DISTRICT NEWS HUB (மாவட்டச் செய்திகள் - Tab Switcher) -->
+        <!-- ========================================================================= -->
+        <section class="space-y-4" id="districts">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-brand-blue dark:border-amber-400 pb-2">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-[#0e2a7a] dark:bg-amber-400"></span>
+                    <h3 class="text-xl font-extrabold text-[#0a1945] dark:text-amber-400 uppercase tracking-wide">
+                        தமிழ்நாடு & உங்கள் மாவட்டச் செய்திகள்
                     </h3>
                 </div>
 
-                <div class="divide-y divide-outline-variant">
-                    <div class="py-3 first:pt-0 last:pb-0 hover:bg-gray-50 transition-colors cursor-pointer">
-                        <span class="text-xs text-secondary font-bold uppercase">வணிகம் / Gold</span>
-                        <h4 class="text-sm font-semibold text-on-surface mt-0.5">சர்வதேச சந்தை நிலவரத்தால் தங்கம் விலையில் சிறிய மாற்றம்: வாடிக்கையாளர்கள் ஆர்வம்</h4>
+                <!-- District Filter Pills -->
+                <div class="flex items-center gap-1.5 overflow-x-auto text-xs font-bold no-scrollbar py-1">
+                    <button onclick="filterDistricts('all')" class="district-tab active bg-[#0a1945] text-amber-400 px-3 py-1 rounded-full transition shrink-0" data-district="all">அனைத்தும்</button>
+                    <button onclick="filterDistricts('chennai')" class="district-tab bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-full hover:bg-amber-400 hover:text-slate-950 transition shrink-0" data-district="chennai">சென்னை</button>
+                    <button onclick="filterDistricts('madurai')" class="district-tab bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-full hover:bg-amber-400 hover:text-slate-950 transition shrink-0" data-district="madurai">மதுரை</button>
+                    <button onclick="filterDistricts('kovai')" class="district-tab bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-full hover:bg-amber-400 hover:text-slate-950 transition shrink-0" data-district="kovai">கோயம்புத்தூர்</button>
+                    <button onclick="filterDistricts('trichy')" class="district-tab bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-full hover:bg-amber-400 hover:text-slate-950 transition shrink-0" data-district="trichy">திருச்சி</button>
+                    <button onclick="filterDistricts('salem')" class="district-tab bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-full hover:bg-amber-400 hover:text-slate-950 transition shrink-0" data-district="salem">சேலம்</button>
+                </div>
+            </div>
+
+            <!-- District News Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="district-cards-grid">
+                
+                <!-- District Card 1: Chennai -->
+                <div class="district-item chennai bg-white dark:bg-[#0f1b3d] rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-card-hover transition group cursor-pointer" onclick="openArticleModal(8)">
+                    <div class="relative h-44 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80&w=500" alt="Chennai Metro" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+                        <span class="absolute top-2 left-2 bg-[#0a1945] text-amber-400 font-bold text-[10px] px-2 py-0.5 rounded">சென்னை</span>
                     </div>
-                    <div class="py-3 first:pt-0 last:pb-0 hover:bg-gray-50 transition-colors cursor-pointer">
-                        <span class="text-xs text-secondary font-bold uppercase">தொழில்நுட்பம்</span>
-                        <h4 class="text-sm font-semibold text-on-surface mt-0.5">ஓசூர் மின் வாகனத் தயாரிப்பு மையம் ஏற்றுமதியில் புதிய சாதனை படைப்பு</h4>
-                    </div>
-                    <div class="py-3 first:pt-0 last:pb-0 hover:bg-gray-50 transition-colors cursor-pointer">
-                        <span class="text-xs text-secondary font-bold uppercase">பொருளாதாரம்</span>
-                        <h4 class="text-sm font-semibold text-on-surface mt-0.5">சென்னையில் புதிய பன்னாட்டு தரவு மையங்கள் அமைப்பதற்கான ஒப்பந்தங்கள் கையெழுத்து</h4>
-                    </div>
-                    <div class="py-3 first:pt-0 last:pb-0 hover:bg-gray-50 transition-colors cursor-pointer">
-                        <span class="text-xs text-secondary font-bold uppercase">அரசியல்</span>
-                        <h4 class="text-sm font-semibold text-on-surface mt-0.5">சட்டப்பேரவை கூட்டத்தொடர்: கடலோர ஒழுங்குமுறை மசோதா மீது காரசார விவாதம்</h4>
+                    <div class="p-4 space-y-2">
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-brand-blue dark:group-hover:text-amber-400 leading-snug line-clamp-2">
+                            சென்னை மெட்ரோ இரண்டாம் கட்ட விரிவாக்கம்: பூந்தமல்லி - கோடம்பாக்கம் தடத்தில் சோதனை ஓட்டம் தொடக்கம்!
+                        </h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">போக்குவரத்து நெரிசலை குறைக்கும் வகையில் புதிய வழித்தடப் பணிகள் விரைவுபடுத்தப்பட்டுள்ளன.</p>
+                        <div class="pt-2 text-[11px] text-slate-400 flex items-center justify-between">
+                            <span>25 நிமிடம் முன்</span>
+                            <span class="text-blue-600 dark:text-amber-400 font-bold">படிக்க →</span>
+                        </div>
                     </div>
                 </div>
-            </aside>
 
+                <!-- District Card 2: Madurai -->
+                <div class="district-item madurai bg-white dark:bg-[#0f1b3d] rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-card-hover transition group cursor-pointer" onclick="openArticleModal(9)">
+                    <div class="relative h-44 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&q=80&w=500" alt="Madurai" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+                        <span class="absolute top-2 left-2 bg-[#0a1945] text-amber-400 font-bold text-[10px] px-2 py-0.5 rounded">மதுரை</span>
+                    </div>
+                    <div class="p-4 space-y-2">
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-brand-blue dark:group-hover:text-amber-400 leading-snug line-clamp-2">
+                            மதுரை எய்ம்ஸ் மற்றும் சர்வதேச விமான நிலைய விரிவாக்கப் பணிகளுக்கான புதிய நிதி ஒதுக்கீடு
+                        </h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">தென் தமிழகத்தின் தொழில் வளர்ச்சியை ஊக்குவிக்கும் முக்கியத் திட்டங்கள் குறித்து ஆய்வு.</p>
+                        <div class="pt-2 text-[11px] text-slate-400 flex items-center justify-between">
+                            <span>1 மணி முன்</span>
+                            <span class="text-blue-600 dark:text-amber-400 font-bold">படிக்க →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- District Card 3: Kovai -->
+                <div class="district-item kovai bg-white dark:bg-[#0f1b3d] rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-card-hover transition group cursor-pointer" onclick="openArticleModal(10)">
+                    <div class="relative h-44 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=500" alt="Coimbatore" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+                        <span class="absolute top-2 left-2 bg-[#0a1945] text-amber-400 font-bold text-[10px] px-2 py-0.5 rounded">கோயம்புத்தூர்</span>
+                    </div>
+                    <div class="p-4 space-y-2">
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-brand-blue dark:group-hover:text-amber-400 leading-snug line-clamp-2">
+                            கோயம்புத்தூர் பம்ப் மற்றும் பொறியியல் தொழிற்துறை: சோலார் விவசாய பம்புகளுக்கு உலகளாவிய ஆர்டர்கள்!
+                        </h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">கொங்கு மண்டல குறு மற்றும் சிறு தொழில் முனைவோரின் புதிய கண்டுபிடிப்புகள் பாராட்டு பெற்றுள்ளன.</p>
+                        <div class="pt-2 text-[11px] text-slate-400 flex items-center justify-between">
+                            <span>2 மணி முன்</span>
+                            <span class="text-blue-600 dark:text-amber-400 font-bold">படிக்க →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- District Card 4: Trichy / Salem -->
+                <div class="district-item trichy salem bg-white dark:bg-[#0f1b3d] rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-card-hover transition group cursor-pointer" onclick="openArticleModal(11)">
+                    <div class="relative h-44 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=500" alt="Trichy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+                        <span class="absolute top-2 left-2 bg-[#0a1945] text-amber-400 font-bold text-[10px] px-2 py-0.5 rounded">திருச்சி & சேலம்</span>
+                    </div>
+                    <div class="p-4 space-y-2">
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-brand-blue dark:group-hover:text-amber-400 leading-snug line-clamp-2">
+                            காவிரி பாசனப் பகுதிகள் மற்றும் சேலம் உருக்காலையின் புதிய சூரிய மின்னாற்றல் பசுமை பூங்கா தொடக்கம்
+                        </h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">சுற்றுச்சூழல் பாதுகாப்பு மற்றும் விவசாயிகள் நலன் கருதி சிறப்பு மின் திட்டங்கள் செயலாக்கம்.</p>
+                        <div class="pt-2 text-[11px] text-slate-400 flex items-center justify-between">
+                            <span>3 மணி முன்</span>
+                            <span class="text-blue-600 dark:text-amber-400 font-bold">படிக்க →</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
-        <!-- SECTION: BUSINESS NEWS & EXPERT BLOGS -->
-        <section class="space-y-6 pt-4">
-            <div class="flex items-center justify-between border-b border-outline-variant pb-2">
-                <h3 class="text-lg font-bold text-primary uppercase tracking-wide">வணிகச் செய்திகள் & ஆசிரியர் வலைப்பதிவுகள் (Blogs)</h3>
-                <a class="text-xs font-bold text-secondary hover:underline uppercase" href="#">அனைத்தையும் காண்க →</a>
+        <!-- ========================================================================= -->
+        <!-- 4. BUSINESS & ECONOMY / STARTUPS SECTION (வணிகம் & ஸ்டார்ட்அப்) -->
+        <!-- ========================================================================= -->
+        <section class="space-y-4" id="business">
+            <div class="flex items-center justify-between border-b-2 border-amber-500 pb-2">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-amber-600 dark:text-amber-400 text-2xl">account_balance</span>
+                    <div>
+                        <h3 class="text-xl font-extrabold text-[#0a1945] dark:text-amber-400 uppercase tracking-wide">
+                            வணிகச் செய்திகள் & சந்தை ஆய்வுகள் (Business & Market Watch)
+                        </h3>
+                    </div>
+                </div>
+                <a href="#business" class="text-xs font-bold text-brand-blue dark:text-amber-400 hover:underline uppercase flex items-center gap-1">
+                    அனைத்து வணிகச் செய்திகள் <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Blog Card 1 -->
-                <div class="bg-white p-5 rounded-xl shadow-xs border border-outline-variant space-y-3">
-                    <span class="text-xs font-bold bg-blue-50 text-primary px-2.5 py-1 rounded">நிபுணர் வலைப்பதிவு (Blog)</span>
-                    <h4 class="font-bold text-on-surface leading-snug hover:text-primary cursor-pointer text-base">இந்தியப் பொருளாதாரத்தின் அடுத்த பத்தாண்டு வளர்ச்சிப் பாதையும் செமிகண்டக்டர் எதிர்காலமும்</h4>
-                    <p class="text-xs text-on-surface-variant line-clamp-3">தொழில்நுட்பக் பெருவழித் தடங்கள் மற்றும் தமிழகத்தின் உள்கட்டமைப்பு முதலீடுகள் எவ்வாறு வேலைவாய்ப்புகளை பெருக்குகின்றன என்பது பற்றிய ஒரு விரிவான பார்வை.</p>
-                    <div class="pt-2 text-[11px] text-gray-500 font-medium">எழுதியவர்: முனைவர் ஜே. ராகவன்</div>
+                
+                <!-- Business Card 1 -->
+                <div class="bg-white dark:bg-[#0f1b3d] p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-card-hover transition space-y-3 flex flex-col justify-between cursor-pointer group" onclick="openArticleModal(12)">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 px-2.5 py-1 rounded">செமிகண்டக்டர் மிஷன்</span>
+                            <span class="text-[11px] text-slate-400">45 நிமிடம் முன்</span>
+                        </div>
+                        <h4 class="font-bold text-base text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-amber-300 leading-snug">
+                            இந்தியாவின் அடுத்த சிலிக்கான் பள்ளத்தாக்காக மாறும் தமிழ்நாடு: புதிய குறைக்கடத்தி கொள்கை 2026
+                        </h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
+                            உலகளாவிய சிப் உற்பத்தி நிறுவனங்கள் தங்களது வடிவமைப்பு மற்றும் சோதனை மையங்களை ஓசூர் மற்றும் சென்னைக்கு கொண்டுவர ஆர்வம் காட்டி வருகின்றன.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+                        <span class="font-semibold">பகுப்பாய்வாளர்: முனைவர் எஸ். நாராயணன்</span>
+                        <span class="text-amber-600 dark:text-amber-400 font-bold">வாசிக்க →</span>
+                    </div>
                 </div>
 
-                <!-- Blog Card 2 -->
-                <div class="bg-white p-5 rounded-xl shadow-xs border border-outline-variant space-y-3">
-                    <span class="text-xs font-bold bg-amber-50 text-secondary px-2.5 py-1 rounded">சந்தை ஆய்வு (Market Watch)</span>
-                    <h4 class="font-bold text-on-surface leading-snug hover:text-primary cursor-pointer text-base">தங்கம் மற்றும் பங்குச் சந்தை முதலீடுகள்: பண்டிகைக் கால உத்திகள் என்ன?</h4>
-                    <p class="text-xs text-on-surface-variant line-clamp-3">சர்வதேச பொருளாதார நிலவரங்களை அடிப்படையாகக் கொண்டு தங்கம் மற்றும் மியூச்சுவல் ஃபண்ட் முதலீடுகளில் கவனிக்க வேண்டிய முக்கியமான குறிப்புகள்.</p>
-                    <div class="pt-2 text-[11px] text-gray-500 font-medium">எழுதியவர்: கார்த்திக் சுப்ரமணியன்</div>
+                <!-- Business Card 2 -->
+                <div class="bg-white dark:bg-[#0f1b3d] p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-card-hover transition space-y-3 flex flex-col justify-between cursor-pointer group" onclick="openArticleModal(13)">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 px-2.5 py-1 rounded">தங்க முதலீடு</span>
+                            <span class="text-[11px] text-slate-400">2 மணி முன்</span>
+                        </div>
+                        <h4 class="font-bold text-base text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-amber-300 leading-snug">
+                            டிஜிட்டல் கோல்ட் மற்றும் சவரன் கோல்ட் பாண்ட்: சாமானியர்கள் முதலீடு செய்ய சிறந்த வழி எது?
+                        </h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
+                            பண்டிகைக் கால சேமிப்பு திட்டங்களில் நகைக் கடைகளின் தவணை முறைகள் மற்றும் டிஜிட்டல் தங்கம் ஆகியவற்றின் சாதக பாதகங்களை அலசும் சிறப்பு வழிகாட்டி.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+                        <span class="font-semibold">எழுதியவர்: ஆர். கிரிதரன், நிதி ஆலோசகர்</span>
+                        <span class="text-amber-600 dark:text-amber-400 font-bold">வாசிக்க →</span>
+                    </div>
                 </div>
 
-                <!-- Business News Card 3 -->
-                <div class="bg-white p-5 rounded-xl shadow-xs border border-outline-variant space-y-3">
-                    <span class="text-xs font-bold bg-green-50 text-green-700 px-2.5 py-1 rounded">தொழில்முனைவோர் (Startups)</span>
-                    <h4 class="font-bold text-on-surface leading-snug hover:text-primary cursor-pointer text-base">கோயம்புத்தூர் டீப்-டெக் ஸ்டார்ட்அப் நிறுவனங்கள் உருவாக்கும் புதிய குரல்வழி செயற்கை நுண்ணறிவு</h4>
-                    <p class="text-xs text-on-surface-variant line-clamp-3">கிராமப்புற வணிகங்களை மேம்படுத்தும் நோக்கில் இளம் பொறியாளர்கள் உருவாக்கி வரும் தமிழில் இயங்கும் புதிய AI செயலிகள் குறித்த சிறப்பு அலசல்.</p>
-                    <div class="pt-2 text-[11px] text-gray-500 font-medium">எழுதியவர்: பி. கே. நிவேதா</div>
+                <!-- Business Card 3 -->
+                <div class="bg-white dark:bg-[#0f1b3d] p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-card-hover transition space-y-3 flex flex-col justify-between cursor-pointer group" onclick="openArticleModal(14)">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 px-2.5 py-1 rounded">ஸ்டார்ட்அப் & AI</span>
+                            <span class="text-[11px] text-slate-400">3 மணி முன்</span>
+                        </div>
+                        <h4 class="font-bold text-base text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-amber-300 leading-snug">
+                            தமிழ் மொழியில் இயங்கும் ஜெனரேட்டிவ் AI: சென்னை ஐஐடி ஸ்டார்ட்அப்பின் புதிய சாதனை
+                        </h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
+                            சட்ட ஆவணங்கள் மற்றும் மருத்துவக் குறிப்புகளை தூய தமிழில் எளிமையாக மொழிபெயர்க்கும் புதிய AI தளம் அறிமுகப்படுத்தப்பட்டுள்ளது.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+                        <span class="font-semibold">எழுதியவர்: பி. நிவேதா, டெக் நிருபர்</span>
+                        <span class="text-amber-600 dark:text-amber-400 font-bold">வாசிக்க →</span>
+                    </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- SUB-PAGE SECTION: SPIRITUAL / ஆன்மிகம் (Compact Sub-Section) -->
-        <section id="aanmigam-section" class="space-y-4 pt-4 border-t border-outline-variant">
-            <div class="flex items-center justify-between pb-2">
+        <!-- ========================================================================= -->
+        <!-- 5. SPIRITUAL & HERITAGE SECTION (ஆன்மிகம் & கோயில் பாரம்பரியம்) -->
+        <!-- Embodying the temple emblem from the official logo -->
+        <!-- ========================================================================= -->
+        <section class="bg-gradient-to-br from-[#063527] via-[#064e3b] to-[#04291e] rounded-3xl p-6 sm:p-8 text-white shadow-xl border-2 border-emerald-600/40 relative overflow-hidden" id="aanmigam">
+            <div class="absolute right-0 top-0 opacity-10 pointer-events-none">
+                <span class="material-symbols-outlined text-[300px] text-amber-400">temple_hindu</span>
+            </div>
+
+            <div class="relative z-10 space-y-6">
+                
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-emerald-500/40 pb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300 shadow-inner">
+                            <span class="material-symbols-outlined text-[28px]">temple_hindu</span>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-xl sm:text-2xl font-black text-amber-300 uppercase tracking-wide">
+                                    ஆன்மிகம் & தமிழ்ப் பண்பாட்டுப் பாரம்பரியம்
+                                </h3>
+                                <span class="bg-amber-400 text-slate-950 text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">சிறப்பு பகுதி</span>
+                            </div>
+                            <p class="text-xs text-emerald-200">மதுரை மீனாட்சி திருக்கோயில், தஞ்சைப் பெரிய கோயில் & தமிழக ஆன்மிக வரலாற்றுப் பெட்டகம்</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <button onclick="openRasiPalanModal()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow transition">
+                            <span class="material-symbols-outlined text-[16px]">stars</span> இன்றைய ராசி பலன்கள்
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Aanmigam Story 1 -->
+                    <div class="bg-black/30 hover:bg-black/40 backdrop-blur-xs p-5 rounded-2xl border border-emerald-500/30 space-y-3 cursor-pointer group transition" onclick="openArticleModal(3)">
+                        <div class="relative h-44 rounded-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&q=80&w=600" alt="Madurai Meenakshi Temple Gopuram" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+                            <span class="absolute bottom-2 left-2 bg-amber-500 text-slate-950 text-[10px] font-bold px-2 py-0.5 rounded">மீனாட்சி அம்மன் திருக்கோயில்</span>
+                        </div>
+                        <h4 class="font-bold text-base text-amber-200 group-hover:text-white leading-snug">
+                            மதுரை மீனாட்சி சுந்தரேஸ்வரர் திருக்கோயில் கோபுரங்களின் நுண்ணிய சிற்பக்கலை & வானியல் ரகசியங்கள்
+                        </h4>
+                        <p class="text-xs text-emerald-100/80 leading-relaxed line-clamp-2">
+                            ஆயிரங்கால் மண்டபத்தின் இசைத்தூண்கள் மற்றும் திராவிட சிற்ப சாஸ்திரத்தின் அரிய நுணுக்கங்கள் பற்றிய வரலாற்று பார்வை.
+                        </p>
+                        <span class="text-amber-400 font-bold text-xs flex items-center gap-1">முழுதும் வாசிக்க →</span>
+                    </div>
+
+                    <!-- Aanmigam Story 2 -->
+                    <div class="bg-black/30 hover:bg-black/40 backdrop-blur-xs p-5 rounded-2xl border border-emerald-500/30 space-y-3 cursor-pointer group transition" onclick="openArticleModal(15)">
+                        <div class="relative h-44 rounded-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1590055531615-f16d36ffe8ec?auto=format&fit=crop&q=80&w=600" alt="Tanjore Big Temple" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+                            <span class="absolute bottom-2 left-2 bg-amber-500 text-slate-950 text-[10px] font-bold px-2 py-0.5 rounded">தஞ்சைப் பெருவுடையார்</span>
+                        </div>
+                        <h4 class="font-bold text-base text-amber-200 group-hover:text-white leading-snug">
+                            ராஜராஜ சோழனின் தஞ்சைப் பெரிய கோயில்: ஆயிரம் ஆண்டுகள் கடந்தும் அசையாத விமானத்தின் நிழல் மர்மம்
+                        </h4>
+                        <p class="text-xs text-emerald-100/80 leading-relaxed line-clamp-2">
+                            ஒற்றைக் கருங்கல்லால் செதுக்கப்பட்ட 80 டன் கலசம் விமானத்தின் உச்சிக்கு எவ்வாறு கொண்டு செல்லப்பட்டது?
+                        </p>
+                        <span class="text-amber-400 font-bold text-xs flex items-center gap-1">முழுதும் வாசிக்க →</span>
+                    </div>
+
+                    <!-- Aanmigam Story 3: Daily Panchangam & Temple Guide -->
+                    <div class="bg-black/40 p-5 rounded-2xl border border-amber-500/40 space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="text-xs font-bold uppercase text-amber-400 flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[16px]">wb_twilight</span> இன்றைய திதி & நல்ல நேரம்
+                            </span>
+                            <div class="space-y-2 text-xs text-emerald-100">
+                                <div class="flex justify-between py-1 border-b border-white/10">
+                                    <span class="text-slate-300">தமிழ் மாதம் / நாள்:</span>
+                                    <span class="font-bold text-amber-300">புரட்டாசி 06 (செவ்வாய்)</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-white/10">
+                                    <span class="text-slate-300">நல்ல நேரம்:</span>
+                                    <span class="font-bold text-white">காலை 10:30 - 11:30 | மாலை 4:30 - 5:30</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-white/10">
+                                    <span class="text-slate-300">ராகு காலம்:</span>
+                                    <span class="font-bold text-red-300">பிற்பகல் 3:00 - 4:30</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-white/10">
+                                    <span class="text-slate-300">திதி / நட்சத்திரம்:</span>
+                                    <span class="font-bold text-white">ஏகாதசி / உத்திராடம்</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="openRasiPalanModal()" class="w-full bg-emerald-700 hover:bg-emerald-600 text-white font-bold py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 shadow">
+                            <span class="material-symbols-outlined text-[15px]">menu_book</span> 12 ராசிகளின் பலன்கள் அறிய →
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 6. VIDEO NEWS & SHORTS GALLERY (வீடியோ செய்திகள்) -->
+        <!-- ========================================================================= -->
+        <section class="space-y-4" id="videos">
+            <div class="flex items-center justify-between border-b-2 border-red-600 pb-2">
                 <div class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-amber-700 text-xl">temple_hindu</span>
-                    <h3 class="text-base font-bold text-amber-900 uppercase tracking-wide">ஆன்மிகம் & பாரம்பரியம் (சிறப்பு உள் பக்கம்)</h3>
+                    <span class="material-symbols-outlined text-red-600 text-2xl">smart_display</span>
+                    <h3 class="text-xl font-extrabold text-[#0a1945] dark:text-amber-400 uppercase tracking-wide">
+                        வீடியோ செய்திகள் & நேரலை காட்சிக் கூடம்
+                    </h3>
                 </div>
-                <a class="text-xs font-bold text-amber-800 hover:underline uppercase" href="#">ஆன்மிகப் பக்கத்திற்குச் செல்லவும் →</a>
+                <span class="text-xs font-bold text-red-600 flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span> HD வீடியோக்கள்
+                </span>
             </div>
-            <div class="bg-amber-50/40 p-4 rounded-xl border border-amber-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-                <div>
-                    <span class="font-bold text-amber-900 text-sm block mb-1">தஞ்சைப் பெருவுடையார் கோயில் & பக்தி இலக்கியச் சிறப்புச் செய்திகள்</span>
-                    <p class="text-gray-600">தமிழகக் கோயில்களின் சிற்பக்கலை ரகசியங்கள் மற்றும் தினசரி ராசி பலன் தகவல்களை ஆன்மிகப் பக்கத்தில் வாசிக்கலாம்.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                
+                <!-- Video 1 -->
+                <div class="bg-white dark:bg-[#0f1b3d] rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-card-hover transition group cursor-pointer" onclick="openVideoPlayerModal('தமிழக தொழிற்கொள்கை 2026 - அமைச்சரவை மாநாட்டு நேரலை', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                    <div class="relative h-44 overflow-hidden bg-black">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=500" alt="Video thumbnail" class="w-full h-full object-cover group-hover:scale-105 opacity-85 transition duration-500"/>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-12 h-12 rounded-full bg-red-600/90 text-white flex items-center justify-center group-hover:scale-110 group-hover:bg-red-600 transition shadow-lg">
+                                <span class="material-symbols-outlined text-[28px]">play_arrow</span>
+                            </div>
+                        </div>
+                        <span class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">05:42</span>
+                    </div>
+                    <div class="p-4 space-y-1.5">
+                        <span class="text-[10px] font-bold text-red-600 dark:text-red-400 uppercase">சிறப்பு நேர்காணல்</span>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-red-600 leading-snug line-clamp-2">
+                            தமிழகத்தில் உருவாகும் அடுத்த தலைமுறை எலக்ட்ரானிக்ஸ் பார்க்: தொழில் துறை அமைச்சர் சிறப்புப் பேட்டி
+                        </h4>
+                    </div>
                 </div>
-                <a href="#" class="bg-amber-700 hover:bg-amber-800 text-white font-bold px-4 py-2 rounded transition-colors shrink-0">ஆன்மிகப் பகுதிக்குச் செல்க</a>
+
+                <!-- Video 2 -->
+                <div class="bg-white dark:bg-[#0f1b3d] rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-card-hover transition group cursor-pointer" onclick="openVideoPlayerModal('தங்கம் விலை உயர்வு பின்னணி - சர்வதேச பொருளாதார அலசல்', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                    <div class="relative h-44 overflow-hidden bg-black">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=500" alt="Video thumbnail" class="w-full h-full object-cover group-hover:scale-105 opacity-85 transition duration-500"/>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-12 h-12 rounded-full bg-red-600/90 text-white flex items-center justify-center group-hover:scale-110 group-hover:bg-red-600 transition shadow-lg">
+                                <span class="material-symbols-outlined text-[28px]">play_arrow</span>
+                            </div>
+                        </div>
+                        <span class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">08:15</span>
+                    </div>
+                    <div class="p-4 space-y-1.5">
+                        <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">சந்தை பார்வை</span>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-red-600 leading-snug line-clamp-2">
+                            தங்கம் விலை உயர்வுக்கான முக்கிய காரணங்கள் என்ன? நகைக்கடை உரிமையாளர்கள் சொல்லும் ரகசியம்!
+                        </h4>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="bg-white dark:bg-[#0f1b3d] rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-card-hover transition group cursor-pointer" onclick="openVideoPlayerModal('மதுரை மீனாட்சி கோயில் வரலாற்று ஆவணப்படம்', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                    <div class="relative h-44 overflow-hidden bg-black">
+                        <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&q=80&w=500" alt="Video thumbnail" class="w-full h-full object-cover group-hover:scale-105 opacity-85 transition duration-500"/>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-12 h-12 rounded-full bg-red-600/90 text-white flex items-center justify-center group-hover:scale-110 group-hover:bg-red-600 transition shadow-lg">
+                                <span class="material-symbols-outlined text-[28px]">play_arrow</span>
+                            </div>
+                        </div>
+                        <span class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">12:30</span>
+                    </div>
+                    <div class="p-4 space-y-1.5">
+                        <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase">வரலாற்றுப் பார்வை</span>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-red-600 leading-snug line-clamp-2">
+                            மதுரை மாநகரத்தின் 2500 ஆண்டு தொன்மை வரலாறு: அழகிய வீடியோ ஆவணத் தொகுப்பு
+                        </h4>
+                    </div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="bg-white dark:bg-[#0f1b3d] rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-card-hover transition group cursor-pointer" onclick="openVideoPlayerModal('புதிய தமிழ் திரைப்படங்கள் டிரைலர் & விமர்சனம்', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                    <div class="relative h-44 overflow-hidden bg-black">
+                        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=500" alt="Video thumbnail" class="w-full h-full object-cover group-hover:scale-105 opacity-85 transition duration-500"/>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-12 h-12 rounded-full bg-red-600/90 text-white flex items-center justify-center group-hover:scale-110 group-hover:bg-red-600 transition shadow-lg">
+                                <span class="material-symbols-outlined text-[28px]">play_arrow</span>
+                            </div>
+                        </div>
+                        <span class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">04:10</span>
+                    </div>
+                    <div class="p-4 space-y-1.5">
+                        <span class="text-[10px] font-bold text-purple-600 dark:text-purple-400 uppercase">சினிமா பஸ்</span>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-red-600 leading-snug line-clamp-2">
+                            இந்த வார வெளியீடுகள்: கோலிவுட் பாக்ஸ் ஆபிஸ் நிலவரம் மற்றும் ரசிகர்களின் விமர்சனங்கள்
+                        </h4>
+                    </div>
+                </div>
+
             </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 7. EDITORIALS & BLOGS + INTERACTIVE POLL (தலையங்கம் & கருத்துக்கணிப்பு) -->
+        <!-- ========================================================================= -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" id="editorials">
+            
+            <!-- Expert Blogs (8 Cols) -->
+            <div class="lg:col-span-8 space-y-4">
+                <div class="flex items-center justify-between border-b-2 border-brand-blue dark:border-amber-400 pb-2">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-brand-blue dark:text-amber-400 text-2xl">rate_review</span>
+                        <h3 class="text-xl font-extrabold text-[#0a1945] dark:text-amber-400 uppercase tracking-wide">
+                            ஆசிரியர் வலைப்பதிவுகள் & தலையங்கம் (Blogs & Columns)
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    
+                    <!-- Column 1 -->
+                    <div class="bg-white dark:bg-[#0f1b3d] p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-card-hover transition space-y-3 cursor-pointer group" onclick="openArticleModal(16)">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-blue-700 dark:text-amber-400 bg-blue-50 dark:bg-slate-800 px-2.5 py-1 rounded">சிறப்புக் கட்டுரை</span>
+                            <span class="text-xs text-slate-400">செப் 22, 2026</span>
+                        </div>
+                        <h4 class="font-bold text-base sm:text-lg text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-amber-300 font-serif leading-snug">
+                            இந்தியப் பொருளாதாரத்தின் அடுத்த பத்தாண்டு வளர்ச்சிப் பாதையும் தென்னிந்திய மாநிலங்களின் தலைமைப் பங்களிப்பும்
+                        </h4>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+                            உற்பத்தித் துறை, தகவல் தொழில்நுட்பம் மற்றும் கல்வி உள்கட்டமைப்பு ஆகியவற்றில் ஏற்பட்டுள்ள அபரிமிதமான வளர்ச்சி எவ்வாறு புதிய வேலைவாய்ப்புகளைப் பெருக்குகிறது என்பது பற்றிய ஒரு தெளிவான பார்வை.
+                        </p>
+                        <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+                            <div class="flex items-center gap-2">
+                                <div class="w-7 h-7 rounded-full bg-brand-blue text-white font-bold flex items-center justify-center text-xs">ரா</div>
+                                <span class="font-bold text-slate-700 dark:text-slate-200">முனைவர் ஜே. ராகவன் (பொருளாதார நிபுணர்)</span>
+                            </div>
+                            <span class="text-blue-600 dark:text-amber-400 font-bold">முழு கட்டுரை வாசிக்க →</span>
+                        </div>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div class="bg-white dark:bg-[#0f1b3d] p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-card-hover transition space-y-3 cursor-pointer group" onclick="openArticleModal(17)">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-slate-800 px-2.5 py-1 rounded">சுற்றுச்சூழல் & சமூகம்</span>
+                            <span class="text-xs text-slate-400">செப் 21, 2026</span>
+                        </div>
+                        <h4 class="font-bold text-base sm:text-lg text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-amber-300 font-serif leading-snug">
+                            தமிழகத்தின் நீர்நிலைகள் மற்றும் பாரம்பரிய ஏரிப் பாசன முறைகளின் மறுமலர்ச்சி அவசியம்
+                        </h4>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+                            சோழர் கால ஏரி வலையமைப்புகளை மீட்டெடுப்பதன் மூலம் வறட்சி மற்றும் வெள்ள அபாயங்களை ஒருங்கே தடுக்கும் நவீன வழிமுறைகள்.
+                        </p>
+                        <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+                            <div class="flex items-center gap-2">
+                                <div class="w-7 h-7 rounded-full bg-emerald-700 text-white font-bold flex items-center justify-center text-xs">சு</div>
+                                <span class="font-bold text-slate-700 dark:text-slate-200">கார்த்திக் சுப்ரமணியன் (சுற்றுச்சூழல் ஆய்வாளர்)</span>
+                            </div>
+                            <span class="text-emerald-600 dark:text-amber-400 font-bold">முழு கட்டுரை வாசிக்க →</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Interactive Poll of the Day (4 Cols) -->
+            <div class="lg:col-span-4 space-y-6">
+                
+                <!-- Poll Card -->
+                <div class="bg-gradient-to-b from-[#0a1945] to-[#06112d] text-white rounded-2xl p-6 border-2 border-amber-400/40 shadow-xl space-y-4">
+                    <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                        <span class="text-amber-400 font-extrabold text-sm flex items-center gap-1.5 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">how_to_vote</span> வாசகர் கருத்துக்கணிப்பு
+                        </span>
+                        <span class="bg-red-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded animate-pulse">நேரலை</span>
+                    </div>
+
+                    <h4 class="font-bold text-sm text-slate-100 leading-snug" id="poll-question">
+                        தமிழகத்தின் புதிய குறைக்கடத்தி (Semiconductor) கொள்கை இளைஞர்களுக்கு அதிக வேலைவாய்ப்பை உருவாக்குமா?
+                    </h4>
+
+                    <div class="space-y-2.5 text-xs font-semibold" id="poll-options-container">
+                        <button onclick="submitVote('yes')" class="w-full text-left bg-white/10 hover:bg-amber-400 hover:text-slate-950 p-3 rounded-xl border border-white/10 transition flex items-center justify-between group">
+                            <span>ஆம், மிகச் சிறந்த வாய்ப்பு</span>
+                            <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100">check_circle</span>
+                        </button>
+                        <button onclick="submitVote('no')" class="w-full text-left bg-white/10 hover:bg-amber-400 hover:text-slate-950 p-3 rounded-xl border border-white/10 transition flex items-center justify-between group">
+                            <span>இல்லை, போதுமான பலன் தராது</span>
+                            <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100">check_circle</span>
+                        </button>
+                        <button onclick="submitVote('neutral')" class="w-full text-left bg-white/10 hover:bg-amber-400 hover:text-slate-950 p-3 rounded-xl border border-white/10 transition flex items-center justify-between group">
+                            <span>பொறுத்திருந்துதான் பார்க்க வேண்டும்</span>
+                            <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100">check_circle</span>
+                        </button>
+                    </div>
+
+                    <!-- Poll Results (hidden until voted) -->
+                    <div id="poll-results-container" class="hidden space-y-3 pt-2">
+                        <div class="space-y-1 text-xs">
+                            <div class="flex justify-between font-bold">
+                                <span>ஆம், மிகச் சிறந்த வாய்ப்பு</span>
+                                <span class="text-amber-400">74%</span>
+                            </div>
+                            <div class="w-full bg-white/10 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-amber-400 h-full rounded-full transition-all duration-700" style="width: 74%"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1 text-xs">
+                            <div class="flex justify-between font-bold">
+                                <span>இல்லை</span>
+                                <span class="text-red-400">14%</span>
+                            </div>
+                            <div class="w-full bg-white/10 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-red-400 h-full rounded-full transition-all duration-700" style="width: 14%"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1 text-xs">
+                            <div class="flex justify-between font-bold">
+                                <span>பொறுத்திருந்து பார்ப்போம்</span>
+                                <span class="text-blue-400">12%</span>
+                            </div>
+                            <div class="w-full bg-white/10 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-blue-400 h-full rounded-full transition-all duration-700" style="width: 12%"></div>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-slate-400 text-center pt-2">மொத்த வாக்குகள்: 3,428 • உங்கள் வாக்கு பதிவாகியுள்ளது!</p>
+                    </div>
+
+                </div>
+
+                <!-- Adutha Thalaimurai App Download Banner -->
+                <div class="bg-gradient-to-r from-blue-900 to-indigo-950 p-5 rounded-2xl border border-blue-700/50 text-white space-y-3">
+                    <div class="flex items-center gap-3">
+                        <img src="logo.png" alt="App Logo" class="w-10 h-10 rounded-full border border-amber-400"/>
+                        <div>
+                            <h5 class="font-bold text-sm text-amber-300">அடுத்த தலைமுறை மொபைல் ஆப்</h5>
+                            <p class="text-[11px] text-slate-300">செய்திகளை நொடியில் வாசிக்க பதிவிறக்குங்கள்</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-white/10 hover:bg-white/20 py-2 rounded-lg text-[11px] font-bold border border-white/20 flex items-center justify-center gap-1">
+                            <span>Google Play</span>
+                        </button>
+                        <button class="flex-1 bg-white/10 hover:bg-white/20 py-2 rounded-lg text-[11px] font-bold border border-white/20 flex items-center justify-center gap-1">
+                            <span>App Store</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 8. CINEMA & SPORTS SECTION (சினிமா & விளையாட்டு) -->
+        <!-- ========================================================================= -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8" id="cinema">
+            
+            <!-- Cinema Hub -->
+            <div class="bg-white dark:bg-[#0f1b3d] p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-purple-600 text-2xl">movie</span>
+                        <h3 class="text-lg font-bold text-[#0a1945] dark:text-amber-400 uppercase tracking-wide">சினிமா & பொழுதுபோக்கு</h3>
+                    </div>
+                    <span class="text-xs font-bold text-purple-600 hover:underline cursor-pointer">மேலும் →</span>
+                </div>
+
+                <div class="flex gap-4 items-center cursor-pointer group" onclick="openArticleModal(7)">
+                    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=300" alt="Cinema" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition shrink-0"/>
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 px-2 py-0.5 rounded">திரைவிமர்சனம்</span>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-purple-600 leading-snug">
+                            தமிழ் சினிமாவின் புதிய மாஸ்டர்பீஸ் படைப்புகள்: சர்வதேச திரைப்பட விழாக்களில் குவிந்த பாராட்டுகள்!
+                        </h4>
+                        <span class="text-[11px] text-slate-400">நேற்று • 3 நிமிடம் வாசிப்பு</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sports Hub -->
+            <div class="bg-white dark:bg-[#0f1b3d] p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4" id="sports">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-green-600 text-2xl">sports_cricket</span>
+                        <h3 class="text-lg font-bold text-[#0a1945] dark:text-amber-400 uppercase tracking-wide">விளையாட்டு & கிரிக்கெட்</h3>
+                    </div>
+                    <span class="text-xs font-bold text-green-600 hover:underline cursor-pointer">மேலும் →</span>
+                </div>
+
+                <div class="flex gap-4 items-center cursor-pointer group" onclick="openArticleModal(6)">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&q=80&w=300" alt="Cricket" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition shrink-0"/>
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-300 px-2 py-0.5 rounded">ஆசியக் கோப்பை 2026</span>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-green-600 leading-snug">
+                            சென்னையில் தொடங்கும் சர்வதேச கிரிக்கெட் தொடர்: இந்திய அணியில் தமிழக இளம் வேகப்பந்து வீச்சாளர் சேர்ப்பு!
+                        </h4>
+                        <span class="text-[11px] text-slate-400">இன்று • 2 நிமிடம் வாசிப்பு</span>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
     </main>
 
-    <!-- MODERN FOOTER WITH SOCIAL ICONS -->
-    <footer class="w-full bg-[#070e27] text-white border-t border-white/10 mt-16 pt-14 pb-8">
+    <!-- ========================================================================= -->
+    <!-- COMPREHENSIVE FOOTER (NewsGhuru.in Style + Brand Heritage) -->
+    <!-- ========================================================================= -->
+    <footer class="w-full bg-[#050e26] text-white border-t border-amber-500/20 mt-16 pt-14 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-white/10">
                 
-                <!-- Brand Information & Social Icons -->
+                <!-- Brand Info & Official Emblem -->
                 <div class="lg:col-span-2 space-y-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 bg-primary text-white font-bold flex items-center justify-center rounded shadow-sm">அ</div>
-                        <span class="text-lg font-extrabold tracking-tight">அடுத்த தலைமுறை</span>
+                        <img src="logo.png" alt="Adutha Thalaimurai Logo" class="w-12 h-12 rounded-full border border-amber-400 p-0.5 bg-[#0a1945]"/>
+                        <div>
+                            <span class="text-xl font-extrabold text-amber-400 tracking-tight block">அடுத்த தலைமுறை</span>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">ADUTHA THALAIMURAI MEDIA NETWORK</span>
+                        </div>
                     </div>
-                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-sm">
-                        தமிழ் மற்றும் உலகளாவிய தமிழ்ச் சமூகத்திற்கான சுயாதீனமான ஊடகக் குரல். வணிகம், தங்கம் மற்றும் நம்பகமான செய்திகள்.
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-sm">
+                        தமிழ்நாடு மற்றும் உலகளாவிய தமிழ்ச் சமூகத்திற்கான சுயாதீனமான, நடுநிலையான செய்தி மற்றும் வணிக ஊடகத் தளம். உண்மை, வேகம், நம்பகத்தன்மையே நமது தாரக மந்திரம்.
                     </p>
                     
-                    <!-- SVG Social Media Icons -->
-                    <div class="pt-2 flex items-center gap-3">
-                        <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-primary text-gray-300 hover:text-white flex items-center justify-center transition-all shadow-sm">
+                    <!-- Social Icons -->
+                    <div class="pt-2 flex items-center gap-2">
+                        <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-blue-600 text-slate-300 hover:text-white flex items-center justify-center transition border border-white/10 shadow-sm">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                         </a>
-                        <a href="#" aria-label="Twitter" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-primary text-gray-300 hover:text-white flex items-center justify-center transition-all shadow-sm">
+                        <a href="#" aria-label="Twitter / X" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition border border-white/10 shadow-sm">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                         </a>
-                        <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-primary text-gray-300 hover:text-white flex items-center justify-center transition-all shadow-sm">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                        <a href="#" aria-label="YouTube" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-primary text-gray-300 hover:text-white flex items-center justify-center transition-all shadow-sm">
+                        <a href="#" aria-label="YouTube" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition border border-white/10 shadow-sm">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                        <a href="#" aria-label="WhatsApp" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-emerald-600 text-slate-300 hover:text-white flex items-center justify-center transition border border-white/10 shadow-sm">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                         </a>
                     </div>
                 </div>
 
-                <!-- Sections -->
+                <!-- Category Links -->
                 <div class="space-y-3">
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">பிரிவுகள்</h4>
-                    <ul class="space-y-2 text-xs text-gray-300">
-                        <li><a href="#" class="hover:text-white transition-colors">முக்கியச் செய்திகள்</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">தமிழ்நாடு</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">வணிகம் & தங்கம்</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">தேசிய செய்திகள்</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">உலகம்</a></li>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">செய்திப் பிரிவுகள்</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="#tamilnadu" class="hover:text-amber-400 transition">முக்கியச் செய்திகள்</a></li>
+                        <li><a href="#districts" class="hover:text-amber-400 transition">மாவட்டச் செய்திகள்</a></li>
+                        <li><a href="#business" class="hover:text-amber-400 transition">வணிகம் & தங்கம் விலை</a></li>
+                        <li><a href="#aanmigam" class="hover:text-amber-400 transition">ஆன்மிகம் & கோயில் மரபு</a></li>
+                        <li><a href="#editorials" class="hover:text-amber-400 transition">தலையங்கம் & கட்டுரைகள்</a></li>
                     </ul>
                 </div>
 
-                <!-- Special Blogs & Dossiers -->
+                <!-- Special Features -->
                 <div class="space-y-3">
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">வலைப்பதிவுகள் & சிறப்புகள்</h4>
-                    <ul class="space-y-2 text-xs text-gray-300">
-                        <li><a href="#" class="hover:text-white transition-colors">ஆசிரியர் வலைப்பதிவுகள் (Blogs)</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">சந்தை ஆய்வுகள் (Market Watch)</a></li>
-                        <li><a href="#aanmigam-section" class="hover:text-white transition-colors">ஆன்மிகம் (உள் பக்கம்)</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">மின்-இதழ் (E-Paper)</a></li>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">சிறப்புச் சேவைகள்</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="javascript:void(0)" onclick="openGoldCalculatorModal()" class="hover:text-amber-400 transition">தங்கம் விலை கால்குலேட்டர்</a></li>
+                        <li><a href="javascript:void(0)" onclick="openEpaperModal()" class="hover:text-amber-400 transition">மின்-இதழ் (E-Paper) பதிவிறக்கம்</a></li>
+                        <li><a href="javascript:void(0)" onclick="openRasiPalanModal()" class="hover:text-amber-400 transition">தினசரி ராசி பலன்கள்</a></li>
+                        <li><a href="#videos" class="hover:text-amber-400 transition">வீடியோ செய்திகள்</a></li>
+                        <li><a href="javascript:void(0)" onclick="openLiveRadioModal()" class="hover:text-amber-400 transition">AI குரல் செய்தி வாசிப்பு</a></li>
                     </ul>
                 </div>
 
-                <!-- Newsletter Input -->
+                <!-- Daily Newsletter Subscribe -->
                 <div class="space-y-3">
                     <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">தினசரி செய்திமடல்</h4>
-                    <p class="text-xs text-gray-400">வணிக மற்றும் செய்தித் தகவல்களை உடனுக்குடன் பெறுக.</p>
-                    <form class="space-y-2" onsubmit="event.preventDefault();">
-                        <input type="email" placeholder="உங்கள் மின்னஞ்சல் முகவரி" class="w-full bg-white/5 text-xs text-white px-3 py-2 rounded border border-white/10 focus:border-primary focus:outline-none placeholder:text-gray-500"/>
-                        <button type="submit" class="w-full bg-primary hover:bg-blue-800 text-white font-bold text-xs uppercase py-2 rounded transition-colors tracking-wider shadow-sm">இணையுங்கள்</button>
+                    <p class="text-xs text-slate-400">தினமும் காலை 7 மணிக்கு வணிகம் மற்றும் முக்கியச் செய்திகளை உங்கள் இமெயிலில் பெறுங்கள்.</p>
+                    <form class="space-y-2" onsubmit="handleNewsletterSubmit(event)">
+                        <input id="footer-email-input" type="email" placeholder="உங்கள் மின்னஞ்சல் முகவரி" required class="w-full bg-white/5 text-xs text-white px-3 py-2.5 rounded-lg border border-white/10 focus:border-amber-400 focus:outline-none placeholder:text-slate-500"/>
+                        <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold text-xs uppercase py-2.5 rounded-lg transition tracking-wider shadow">
+                            இணைந்திருங்கள்
+                        </button>
                     </form>
                 </div>
 
             </div>
 
             <!-- Bottom Legal Bar -->
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400 pt-2">
-                <p>© 2024-2026 அடுத்த தலைமுறை ஊடக வலையமைப்பு. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</p>
-                <div class="flex flex-wrap items-center gap-6 font-medium">
-                    <a href="#" class="hover:text-white transition-colors">தனியுரிமைக் கொள்கை</a>
-                    <a href="#" class="hover:text-white transition-colors">சேவை விதிகள்</a>
-                    <a href="#" class="hover:text-white transition-colors">நெறிமுறைகள்</a>
-                    <a href="#" class="hover:text-white transition-colors">தொடர்புக்கு</a>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400 pt-2">
+                <p>© 2024–2026 அடுத்த தலைமுறை ஊடக நிறுவனம் (Adutha Thalaimurai). அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</p>
+                <div class="flex flex-wrap items-center gap-5 font-medium">
+                    <a href="javascript:void(0)" onclick="alert('தனியுரிமைக் கொள்கை: அடுத்த தலைமுறை வாசகர்களின் தகவல்கள் பாதுகாப்பாகப் பராமரிக்கப்படும்.')" class="hover:text-amber-400 transition">தனியுரிமைக் கொள்கை</a>
+                    <a href="javascript:void(0)" onclick="alert('சேவை விதிகள்: இணையதள பயன்பாட்டு விதிகள் இந்திய சட்ட விதிகளுக்கு உட்பட்டவை.')" class="hover:text-amber-400 transition">விதிமுறைகள்</a>
+                    <a href="javascript:void(0)" onclick="alert('ஆசிரியர் குழு: ஆசிரியர் - கே. செந்தில் நாதன், தலைமை நிருபர் - முனைவர் ஜே. ராகவன்')" class="hover:text-amber-400 transition">ஆசிரியர் குழு</a>
+                    <a href="javascript:void(0)" onclick="alert('தொடர்புக்கு: info@aduthathalaimurai.in | தொலைபேசி: +91 44 2819 0000')" class="hover:text-amber-400 transition">தொடர்புக்கு</a>
                 </div>
             </div>
 
         </div>
     </footer>
 
-    <!-- Real-time Clock JavaScript -->
+    <!-- ========================================================================= -->
+    <!-- INTERACTIVE MODALS & DRAWERS -->
+    <!-- ========================================================================= -->
+
+    <!-- 1. FULL ARTICLE READER MODAL -->
+    <div id="article-reader-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div class="bg-white dark:bg-[#0c1633] rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-300 dark:border-slate-700 flex flex-col text-slate-900 dark:text-slate-100">
+            
+            <!-- Modal Header / Controls -->
+            <div class="sticky top-0 bg-white/95 dark:bg-[#0c1633]/95 backdrop-blur-md p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between z-10">
+                <div class="flex items-center gap-2">
+                    <span id="modal-article-category" class="bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-amber-400 font-bold text-xs px-2.5 py-1 rounded">தமிழ்நாடு</span>
+                    <span id="modal-article-time" class="text-xs text-slate-400 font-medium">25 நிமிடங்களுக்கு முன்</span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <!-- Text-to-Speech Simulator -->
+                    <button onclick="playArticleSpeech()" id="speech-btn" class="bg-slate-100 dark:bg-slate-800 hover:bg-amber-400 hover:text-slate-950 text-slate-700 dark:text-slate-200 p-2 rounded-full transition flex items-center gap-1 text-xs font-bold" title="செய்தியைக் கேட்க">
+                        <span class="material-symbols-outlined text-[18px]">volume_up</span>
+                        <span class="hidden sm:inline">கேட்க</span>
+                    </button>
+                    <!-- Share Modal -->
+                    <button onclick="shareActiveModalArticle()" class="bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white p-2 rounded-full transition" title="பகிரவும்">
+                        <span class="material-symbols-outlined text-[18px]">share</span>
+                    </button>
+                    <!-- Close Button -->
+                    <button onclick="closeArticleModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 hover:bg-red-600 hover:text-white flex items-center justify-center transition">
+                        <span class="material-symbols-outlined text-[20px]">close</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-6 sm:p-8 space-y-6" id="modal-article-body">
+                <h2 id="modal-article-title" class="text-2xl sm:text-3xl font-extrabold leading-snug font-serif text-[#0a1945] dark:text-amber-400">
+                    செய்தி தலைப்பு ஏற்றப்படுகிறது...
+                </h2>
+
+                <div class="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900">
+                    <img id="modal-article-img" src="" alt="Article image" class="w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex items-center justify-between text-xs text-slate-500 pb-4 border-b border-slate-200 dark:border-slate-800">
+                    <span id="modal-article-author" class="font-bold">எழுதியவர்: கே. செந்தில் நாதன்</span>
+                    <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 12,840 பார்வைகள்</span>
+                </div>
+
+                <div id="modal-article-text" class="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 space-y-4">
+                    <!-- Paragraphs populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <span class="text-xs text-slate-500">அடுத்த தலைமுறை டிஜிட்டல் இதழ்</span>
+                <button onclick="closeArticleModal()" class="bg-[#0a1945] text-amber-400 font-bold px-4 py-1.5 rounded-lg text-xs">
+                    மூடுக
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 2. GOLD PRICE CALCULATOR MODAL -->
+    <div id="gold-calculator-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-[#0c1633] rounded-3xl max-w-md w-full p-6 shadow-2xl border-2 border-amber-400 text-slate-900 dark:text-slate-100 space-y-5">
+            
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-amber-500 text-2xl">calculate</span>
+                    <h3 class="text-lg font-black text-[#0a1945] dark:text-amber-400">தங்கம் விலை கால்குலேட்டர்</h3>
+                </div>
+                <button onclick="closeGoldCalculatorModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 hover:bg-red-600 hover:text-white flex items-center justify-center transition">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+            </div>
+
+            <div class="space-y-4 text-xs">
+                <div>
+                    <label class="font-bold block mb-1">காரட் வகையைத் தேர்ந்தெடுக்கவும்:</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button type="button" id="calc-22k-btn" onclick="setCalcKarat(22)" class="py-2 rounded-lg font-bold bg-amber-500 text-slate-950 border border-amber-600">22 காரட் (₹14,185/g)</button>
+                        <button type="button" id="calc-24k-btn" onclick="setCalcKarat(24)" class="py-2 rounded-lg font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">24 காரட் (₹15,475/g)</button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="font-bold block mb-1">தங்கத்தின் எடை (கிராமில் / Grams):</label>
+                    <div class="flex gap-2">
+                        <input id="calc-grams-input" type="number" value="8" min="0.5" step="0.5" oninput="calculateGoldRate()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-amber-400"/>
+                        <button type="button" onclick="setGrams(8)" class="bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-bold px-3 rounded-lg border border-amber-400/40">1 சவரன்</button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="font-bold block mb-1">சேதாரம் / செய்கூலி (உத்தேச சதவீதம் %):</label>
+                    <input id="calc-making-input" type="number" value="8" min="0" max="25" oninput="calculateGoldRate()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-sm font-bold"/>
+                </div>
+
+                <!-- Breakdown Calculation Box -->
+                <div class="bg-amber-50 dark:bg-amber-950/40 p-4 rounded-xl border border-amber-300 dark:border-amber-700/50 space-y-2 text-xs">
+                    <div class="flex justify-between">
+                        <span class="text-slate-600 dark:text-slate-400">தங்கத்தின் அடிப்படை விலை:</span>
+                        <span id="calc-base-price" class="font-bold">₹1,13,480</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600 dark:text-slate-400">செய்கூலி / சேதாரம் (8%):</span>
+                        <span id="calc-making-charge" class="font-bold">₹9,078</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600 dark:text-slate-400">ஜி.எஸ்.டி (3%):</span>
+                        <span id="calc-gst" class="font-bold">₹3,677</span>
+                    </div>
+                    <div class="pt-2 border-t border-amber-300 dark:border-amber-700/60 flex justify-between text-sm font-black text-slate-900 dark:text-amber-300">
+                        <span>மொத்த உத்தேச விலை:</span>
+                        <span id="calc-total-price" class="text-base font-extrabold text-amber-700 dark:text-amber-400">₹1,26,235</span>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="closeGoldCalculatorModal()" class="w-full bg-[#0a1945] text-amber-400 font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider">
+                சரி / முடிந்தது
+            </button>
+        </div>
+    </div>
+
+    <!-- 3. RASI PALAN & PANCHANGAM MODAL -->
+    <div id="rasi-palan-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-[#0c1633] rounded-3xl max-w-2xl w-full p-6 max-h-[85vh] overflow-y-auto shadow-2xl border-2 border-emerald-600 text-slate-900 dark:text-slate-100 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-amber-500 text-2xl">stars</span>
+                    <h3 class="text-lg font-black text-[#0a1945] dark:text-amber-400">இன்றைய 12 ராசி பலன்கள்</h3>
+                </div>
+                <button onclick="closeRasiPalanModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 hover:bg-red-600 hover:text-white flex items-center justify-center transition">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs" id="rasi-palan-grid">
+                <!-- Rasi items populated dynamically via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. E-PAPER PREVIEW MODAL -->
+    <div id="epaper-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-[#0c1633] rounded-3xl max-w-3xl w-full p-6 shadow-2xl border-2 border-amber-400 text-slate-900 dark:text-slate-100 space-y-4 text-center">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div class="flex items-center gap-2 text-left">
+                    <span class="material-symbols-outlined text-amber-500 text-2xl">newspaper</span>
+                    <div>
+                        <h3 class="text-base font-black text-[#0a1945] dark:text-amber-400">அடுத்த தலைமுறை — தினசரி மின்-இதழ் (E-Paper)</h3>
+                        <span class="text-[11px] text-slate-400">பதிப்பு: சென்னை & மதுரை மண்டலங்கள் | செப் 22, 2026</span>
+                    </div>
+                </div>
+                <button onclick="closeEpaperModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 hover:bg-red-600 hover:text-white flex items-center justify-center transition">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+            </div>
+
+            <div class="bg-slate-100 dark:bg-slate-900 p-8 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center space-y-4">
+                <div class="w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-4xl">picture_as_pdf</span>
+                </div>
+                <div>
+                    <h4 class="font-bold text-base text-slate-800 dark:text-slate-100">இன்றைய முழு மின்-இதழ் (PDF வடிவம்)</h4>
+                    <p class="text-xs text-slate-500 mt-1">16 பக்கங்கள் கொண்ட முழுமையான வணிகம், தமிழ்நாடு மற்றும் ஆன்மிக செய்திகள் தொகுப்பு.</p>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="downloadEpaperDemo()" class="bg-[#0a1945] text-amber-400 font-bold px-5 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow hover:bg-blue-900 transition">
+                        <span class="material-symbols-outlined text-[18px]">download</span> மின்-இதழைப் பதிவிறக்கு (PDF)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. BOOKMARKS DRAWER -->
+    <div id="bookmarks-drawer" class="fixed inset-y-0 right-0 max-w-sm w-full bg-white dark:bg-[#0c1633] shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out border-l border-slate-200 dark:border-slate-800 flex flex-col">
+        <div class="p-4 bg-[#0a1945] text-white flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-amber-400">bookmark</span>
+                <h3 class="font-bold text-sm">சேமிக்கப்பட்ட செய்திகள்</h3>
+            </div>
+            <button onclick="toggleBookmarksDrawer()" class="p-1 hover:bg-white/20 rounded">
+                <span class="material-symbols-outlined text-[20px]">close</span>
+            </button>
+        </div>
+
+        <div id="bookmarks-list" class="p-4 flex-1 overflow-y-auto space-y-3 text-xs">
+            <div class="text-center text-slate-400 py-12">
+                <span class="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-700 block mb-2">bookmark_border</span>
+                <p>நீங்கள் இதுவரை எந்த செய்தியையும் சேமிக்கவில்லை.</p>
+                <p class="text-[11px] text-slate-500 mt-1">செய்தி அட்டைகளில் உள்ள சேமிப்பு பொத்தானைக் கிளிக் செய்யவும்.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. VIDEO PLAYER MODAL -->
+    <div id="video-player-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-[#0c1633] rounded-3xl max-w-2xl w-full p-4 text-white space-y-3 border border-slate-700">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                <h4 id="video-modal-title" class="font-bold text-sm text-amber-300 truncate pr-4">வீடியோ இயங்குகிறது...</h4>
+                <button onclick="closeVideoPlayerModal()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-red-600 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+            </div>
+            <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black flex items-center justify-center">
+                <div class="text-center space-y-3 p-6">
+                    <span class="material-symbols-outlined text-5xl text-red-600 animate-pulse">play_circle</span>
+                    <p class="text-sm font-bold text-slate-200" id="video-sim-title">வீடியோ ஒளிபரப்பு தயார்</p>
+                    <p class="text-xs text-slate-400">அடுத்த தலைமுறை HD வீடியோ வலையமைப்பு நேரலை</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+    <!-- ========================================================================= -->
+    <!-- JAVASCRIPT LOGIC -->
+    <!-- ========================================================================= -->
     <script>
-        function updateClock() {
+        // Article Database for Modal Reader & Bookmarking
+        const articlesDB = {
+            1: {
+                id: 1,
+                title: "தமிழகத்தின் உலகளாவிய தொழில்நுட்ப பெருவழித் தடம்: ரூ.45,000 கோடி முதலீட்டுக்கு அமைச்சரவை ஒப்புதல்!",
+                category: "தமிழ்நாடு & முதலீடு",
+                author: "கே. செந்தில் நாதன், தலைமை நிருபர்",
+                time: "25 நிமிடங்களுக்கு முன்",
+                img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200",
+                paragraphs: [
+                    "தென்னிந்தியாவின் பொருளாதார உள்கட்டமைப்பை அடுத்த தலைமுறைக்குக் கொண்டுசெல்லும் வகையில், கோயம்புத்தூர், திருச்சி மற்றும் மதுரை மண்டலங்களை இணைக்கும் பிரம்மாண்ட செமிகண்டக்டர் மற்றும் AI தரவு மைய முதலீடுகளுக்கு தமிழக அரசு அதிகாரப்பூர்வ ஒப்புதல் வழங்கியுள்ளது.",
+                    "சென்னை தலைமைச் செயலகத்தில் நடைபெற்ற அமைச்சரவைக் கூட்டத்தில் இந்த வரலாற்றுச் சிறப்புமிக்க முடிவு எடுக்கப்பட்டது. இதன் மூலம் அடுத்த 5 ஆண்டுகளில் சுமார் 1.2 லட்சம் நேரடி மற்றும் மறைமுக உயர் தொழில்நுட்ப வேலைவாய்ப்புகள் உருவாக்கப்படும் என்று தெரிவிக்கப்பட்டுள்ளது.",
+                    "குறிப்பாக, ஓசூர் - கிருஷ்ணகிரி மின்வாகன உற்பத்தி மண்டலத்துடன் இந்த புதிய மின்னணு உற்பத்தி தடம் இணைக்கப்படுவதால் சர்வதேச சிப் உற்பத்தி நிறுவனங்கள் தமிழகத்தில் தங்களது உலகளாவிய வடிவமைப்பு மையங்களைத் திறக்க விருப்பம் தெரிவித்துள்ளன."
+                ]
+            },
+            2: {
+                id: 2,
+                title: "சர்வதேச சந்தை நிலவரம்: தங்கம் விலையில் திடீர் ஏற்றம் — நகை வாங்குவோர் கவனிக்க வேண்டியவை!",
+                category: "வணிகம் & முதலீடு",
+                author: "ஆர். கிரிதரன், நிதி ஆலோசகர்",
+                time: "1 மணி நேரத்திற்கு முன்",
+                img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "அமெரிக்க ஃபெடரல் வங்கியின் வட்டி விகித கொள்கைகள் மற்றும் மத்திய கிழக்கு நாடுகளின் புவிசார் அரசியல் சூழ்நிலைகள் காரணமாக சர்வதேச சந்தையில் தங்கம் விலை மீண்டும் புதிய உச்சத்தை நோக்கி நகர்ந்து வருகிறது.",
+                    "சென்னையில் ஆபரணத் தங்கம் 22 காரட் ஒரு கிராம் ₹14,185 ஆகவும், 24 காரட் தூய தங்கம் ₹15,475 ஆகவும் விற்பனையாகிறது. வாடிக்கையாளர்கள் செய்கூலி மற்றும் ஜிஎஸ்டி கணக்கீடுகளை சரியாக கவனித்து முதலீடு செய்யுமாறு நிபுணர்கள் அறிவுறுத்துகின்றனர்."
+                ]
+            },
+            3: {
+                id: 3,
+                title: "மதுரை மீனாட்சி சுந்தரேஸ்வரர் திருக்கோயில் கோபுரங்களின் திராவிடக் கட்டிடக்கலை ரகசியங்கள்",
+                category: "ஆன்மிகம் & பாரம்பரியம்",
+                author: "பேராசிரியர் த. சுந்தரராஜன்",
+                time: "2 மணி நேரத்திற்கு முன்",
+                img: "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "மதுரை மாநகரின் இதயப் பகுதியாக விளங்கும் அன்னை மீனாட்சி சுந்தரேஸ்வரர் திருக்கோயிலின் தெற்குக் கோபுரம் சுமார் 160 அடி உயரம் கொண்ட பிரம்மாண்ட திராவிட கட்டிடக்கலை அதிசயம் ஆகும்.",
+                    "கோபுரங்களில் உள்ள ஆயிரக்கணக்கான சுதைச் சிற்பங்கள், தமிழர்களின் வானியல் அறிவு மற்றும் சங்க கால வரலாற்றுத் தொடர்புகளை வெளிப்படுத்துகின்றன. ஆயிரங்கால் மண்டபத்தில் உள்ள இசைத் தூண்கள் பழங்கால ஒலியியல் மேதமைக்கு வாழும் சான்றாகும்."
+                ]
+            },
+            4: {
+                id: 4,
+                title: "ஓசூர் மற்றும் கோயம்புத்தூர் மின் வாகன மையங்கள் மூலம் சர்வதேச ஏற்றுமதி புதிய உச்சம்",
+                category: "தொழில்நுட்பம்",
+                author: "பி. நிவேதா, டெக் நிருபர்",
+                time: "3 மணி நேரத்திற்கு முன்",
+                img: "https://images.unsplash.com/photo-1558441719-8b489c6ef2d1?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "தமிழகத்தின் ஓசூர் மின்வாகன உற்பத்தி மண்டலம் மற்றும் கோயம்புத்தூர் உதிரிபாகங்கள் மையம் ஐரோப்பிய மற்றும் தென்கிழக்கு ஆசிய நாடுகளுக்கான மின்சார இருசக்கர வாகன ஏற்றுமதியில் நடப்பு நிதியாண்டில் 38% வளர்ச்சியைப் பதிவு செய்துள்ளது."
+                ]
+            },
+            5: {
+                id: 5,
+                title: "புரட்டாசி மாத விரத சிறப்புகள் & கோயில் நடை திறப்பு நேரங்கள்",
+                category: "ஆன்மிகம்",
+                author: "பக்தி சிறப்பு நிருபர்",
+                time: "4 மணி முன்",
+                img: "https://images.unsplash.com/photo-1590055531615-f16d36ffe8ec?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "புரட்டாசி சனிக்கிழமைகளில் பெருமாள் கோயில்களில் சிறப்பு தளிகை மற்றும் வழிபாடுகள் நடைபெறுகின்றன. பக்தர்கள் வசதிக்காக முக்கிய வைணவ திருத்தலங்களில் சிறப்பு தரிசன வரிசைகள் ஏற்படுத்தப்பட்டுள்ளன."
+                ]
+            },
+            6: {
+                id: 6,
+                title: "சென்னையில் தொடங்கும் சர்வதேச கிரிக்கெட் தொடர்: இந்திய அணியில் தமிழக இளம் வேகப்பந்து வீச்சாளர் சேர்ப்பு!",
+                category: "விளையாட்டு",
+                author: "எம். தினேஷ், ஸ்போர்ட்ஸ் டெஸ்க்",
+                time: "இன்று",
+                img: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "சேப்பாக்கம் எம்.ஏ. சிதம்பரம் மைதானத்தில் நடைபெறவுள்ள சர்வதேச கிரிக்கெட் போட்டிக்கான இந்திய அணியில் தமிழகத்தின் இளம் திறமையான வேகப்பந்து வீச்சாளர் தேர்வு செய்யப்பட்டுள்ளார்."
+                ]
+            },
+            7: {
+                id: 7,
+                title: "தமிழ் சினிமாவின் புதிய மாஸ்டர்பீஸ் படைப்புகள்: சர்வதேச திரைப்பட விழாக்களில் குவிந்த பாராட்டுகள்!",
+                category: "சினிமா",
+                author: "எஸ். கார்த்தி, சினிமா விமர்சகர்",
+                time: "நேற்று",
+                img: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "யதார்த்தமான கதைக்களங்கள் மற்றும் அழுத்தமான திரைக்கதை கொண்ட தமிழ் சுயாதீன திரைப்படங்கள் ரோட்டர்டாம் மற்றும் பூசான் சர்வதேச திரைப்பட விழாக்களில் சிறப்பு விருதுகளை வென்று சாதனை படைத்துள்ளன."
+                ]
+            },
+            8: {
+                id: 8,
+                title: "சென்னை மெட்ரோ இரண்டாம் கட்ட விரிவாக்கம்: பூந்தமல்லி - கோடம்பாக்கம் தடத்தில் சோதனை ஓட்டம் தொடக்கம்!",
+                category: "சென்னை செய்திகள்",
+                author: "சென்னை நிருபர்",
+                time: "25 நிமிடம் முன்",
+                img: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "சென்னையின் மேற்கு மற்றும் மத்திய பகுதிகளை இணைக்கும் 118 கி.மீ மெட்ரோ ரயில் விரிவாக்கப் பணிகளில் முதல் கட்டமாக பூந்தமல்லி புறவழிச்சாலையில் உயர் அழுத்த மின் சோதனைகள் வெற்றிகரமாக முடிவடைந்துள்ளன."
+                ]
+            },
+            9: {
+                id: 9,
+                title: "மதுரை எய்ம்ஸ் மற்றும் சர்வதேச விமான நிலைய விரிவாக்கப் பணிகளுக்கான புதிய நிதி ஒதுக்கீடு",
+                category: "மதுரை செய்திகள்",
+                author: "மதுரை சிறப்பு நிருபர்",
+                time: "1 மணி முன்",
+                img: "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "தென் மாவட்டங்களின் மருத்துவ மற்றும் போக்குவரத்து உள்கட்டமைப்பை நவீனப்படுத்தும் எய்ம்ஸ் வளாக கட்டுமானப் பணிகள் மற்றும் மதுரை விமான நிலைய இரவு நேர தரையிறங்கு தடம் அமைக்கும் பணிகள் வேகமெடுத்துள்ளன."
+                ]
+            },
+            10: {
+                id: 10,
+                title: "கோயம்புத்தூர் பம்ப் மற்றும் பொறியியல் தொழிற்துறை: சோலார் விவசாய பம்புகளுக்கு உலகளாவிய ஆர்டர்கள்!",
+                category: "கோயம்புத்தூர் செய்திகள்",
+                author: "கொங்கு மண்டல நிருபர்",
+                time: "2 மணி முன்",
+                img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "குறைந்த மின்சாரத்தில் அதிக நீர் இறைக்கும் திறன் கொண்ட அதிநவீன சோலார் பம்புகளை உருவாக்கியுள்ள கோவை சிறு உற்பத்தியாளர்கள் ஆப்பிரிக்க நாடுகளுக்கு ஏற்றுமதி செய்ய ஒப்பந்தங்கள் செய்துள்ளனர்."
+                ]
+            },
+            11: {
+                id: 11,
+                title: "காவிரி பாசனப் பகுதிகள் மற்றும் சேலம் உருக்காலையின் புதிய சூரிய மின்னாற்றல் பசுமை பூங்கா தொடக்கம்",
+                category: "திருச்சி & சேலம்",
+                author: "டெல்டா சிறப்பு செய்தியாளர்",
+                time: "3 மணி முன்",
+                img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "காவிரி டெல்டா மாவட்டங்களில் விவசாயப் பாசனத்திற்கான நீர் மேலாண்மை திட்டங்கள் மற்றும் சேலத்தில் 100 மெகாவாட் சூரிய ஒளி மின் பூங்கா திட்டங்கள் செயல்பாட்டுக்கு வந்துள்ளன."
+                ]
+            },
+            12: {
+                id: 12,
+                title: "இந்தியாவின் அடுத்த சிலிக்கான் பள்ளத்தாக்காக மாறும் தமிழ்நாடு: புதிய குறைக்கடத்தி கொள்கை 2026",
+                category: "வணிகம் & முதலீடு",
+                author: "முனைவர் எஸ். நாராயணன்",
+                time: "45 நிமிடம் முன்",
+                img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "செமிகண்டக்டர் மற்றும் அட்வான்ஸ்டு பேக்கேஜிங் துறையில் சர்வதேச முதலீடுகளை ஈர்க்க தமிழக அரசு அறிவித்துள்ள சிறப்பு சலுகைகள் மற்றும் வழிகாட்டுதல்கள் உலகளாவிய டெக் வல்லுநர்களின் கவனத்தை ஈர்த்துள்ளன."
+                ]
+            },
+            13: {
+                id: 13,
+                title: "டிஜிட்டல் கோல்ட் மற்றும் சவரன் கோல்ட் பாண்ட்: சாமானியர்கள் முதலீடு செய்ய சிறந்த வழி எது?",
+                category: "தங்க முதலீடு",
+                author: "ஆர். கிரிதரன்",
+                time: "2 மணி முன்",
+                img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "சேதாரக் கட்டணங்கள் இல்லாமல் தங்கத்தில் முதலீடு செய்ய நினைக்கும் முதலீட்டாளர்களுக்கு இந்திய ரிசர்வ் வங்கியின் தங்கப் பத்திரங்கள் மற்றும் மியூச்சுவல் ஃபண்ட் கோல்ட் இடிஎஃப்-கள் எவ்வாறு பயனளிக்கின்றன என்பதன் விரிவான ஆய்வு."
+                ]
+            },
+            14: {
+                id: 14,
+                title: "தமிழ் மொழியில் இயங்கும் ஜெனரேட்டிவ் AI: சென்னை ஐஐடி ஸ்டார்ட்அப்பின் புதிய சாதனை",
+                category: "ஸ்டார்ட்அப் & AI",
+                author: "பி. நிவேதா",
+                time: "3 மணி முன்",
+                img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "கிராமப்புற மக்களும் அரசுத் திட்டங்கள் மற்றும் சட்ட ஆவணங்களை தங்களின் தாய்மொழியான தமிழில் குரல்வழியாகவே அறிந்து கொள்ளும் புதிய செயற்கை நுண்ணறிவு மாதிரி வெற்றிகரமாக அறிமுகம் செய்யப்பட்டுள்ளது."
+                ]
+            },
+            15: {
+                id: 15,
+                title: "ராஜராஜ சோழனின் தஞ்சைப் பெரிய கோயில்: ஆயிரம் ஆண்டுகள் கடந்தும் அசையாத விமானத்தின் நிழல் மர்மம்",
+                category: "வரலாறு & மரபு",
+                author: "பேராசிரியர் த. சுந்தரராஜன்",
+                time: "நேற்று",
+                img: "https://images.unsplash.com/photo-1590055531615-f16d36ffe8ec?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "தஞ்சைப் பெரிய கோயில் விமானத்தின் 216 அடி பிரம்மாண்ட கட்டமைப்பு, நிலநடுக்கங்களைத் தாங்கும் அதன் பூட்டப்பட்ட கல்வடிவமைப்புகள் மற்றும் சோழர் கால சிற்ப மேதமை உலகப் பாரம்பரியப் பட்டியலில் முதலிடம் வகிக்கிறது."
+                ]
+            },
+            16: {
+                id: 16,
+                title: "இந்தியப் பொருளாதாரத்தின் அடுத்த பத்தாண்டு வளர்ச்சிப் பாதையும் தென்னிந்திய மாநிலங்களின் தலைமைப் பங்களிப்பும்",
+                category: "தலையங்கம்",
+                author: "முனைவர் ஜே. ராகவன்",
+                time: "செப் 22, 2026",
+                img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "உற்பத்தித் துறை, ஏற்றுமதி மற்றும் மகளிர் தொழில்முனைவில் தமிழ்நாடு மற்றும் தென்னிந்திய மாநிலங்கள் காட்டும் முன்னுதாரணமான கொள்கைகள் இந்தியாவின் 5 டிரில்லியன் டாலர் பொருளாதார இலக்கை அடைவதில் முக்கிய உந்துசக்தியாக விளங்குகின்றன."
+                ]
+            },
+            17: {
+                id: 17,
+                title: "தமிழகத்தின் நீர்நிலைகள் மற்றும் பாரம்பரிய ஏரிப் பாசன முறைகளின் மறுமலர்ச்சி அவசியம்",
+                category: "சுற்றுச்சூழல்",
+                author: "கார்த்திக் சுப்ரமணியன்",
+                time: "செப் 21, 2026",
+                img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=800",
+                paragraphs: [
+                    "மழைக்கால வெள்ள உபரி நீரை சேமிக்கும் சங்கிலித் தொடர் ஏரிகளை தூர்வாரிப் பாதுகாப்பது மட்டுமே எதிர்கால நீர் தேவைகளுக்கான நிரந்தர தீர்வாகும்."
+                ]
+            }
+        };
+
+        // Breaking Ticker Headlines Array
+        const breakingHeadlines = [
+            "தமிழகத்தில் ரூ.45,000 கோடி முதலீட்டில் செமிகண்டக்டர் மற்றும் அதிநவீன தொழில்நுட்ப பெருவழித் திட்டம்: அமைச்சரவை ஒப்புதல்!",
+            "சென்னையில் ஆபரணத் தங்கம் விலை கிராமுக்கு ₹45 உயர்ந்து ₹14,185 ஆக விற்பனை!",
+            "சென்னை மெட்ரோ இரண்டாம் கட்ட விரிவாக்கம்: பூந்தமல்லி தடத்தில் மின் சோதனை ஓட்டம் தொடக்கம்!",
+            "மதுரை மீனாட்சி சுந்தரேஸ்வரர் திருக்கோயில் திருப்பணிகளுக்கு புதிய நிதி ஒதுக்கீடு!",
+            "ஓசூர் மின்சார வாகன உற்பத்தி மையம் சர்வதேச ஏற்றுமதியில் புதிய சாதனை!"
+        ];
+        let currentTickerIndex = 0;
+        let tickerInterval;
+
+        function updateBreakingTicker() {
+            const tickerEl = document.getElementById('breaking-ticker-text');
+            if (tickerEl) {
+                tickerEl.style.opacity = '0';
+                tickerEl.style.transform = 'translateY(8px)';
+                setTimeout(() => {
+                    tickerEl.textContent = breakingHeadlines[currentTickerIndex];
+                    tickerEl.style.opacity = '1';
+                    tickerEl.style.transform = 'translateY(0)';
+                }, 300);
+            }
+        }
+
+        function nextBreakingTicker() {
+            currentTickerIndex = (currentTickerIndex + 1) % breakingHeadlines.length;
+            updateBreakingTicker();
+        }
+
+        function prevBreakingTicker() {
+            currentTickerIndex = (currentTickerIndex - 1 + breakingHeadlines.length) % breakingHeadlines.length;
+            updateBreakingTicker();
+        }
+
+        function startTickerTimer() {
+            tickerInterval = setInterval(nextBreakingTicker, 5000);
+        }
+
+        // Live Real-Time Clock & Tamil Date
+        function updateLiveTime() {
             const now = new Date();
             let hours = now.getHours();
             let minutes = now.getMinutes();
             let seconds = now.getSeconds();
             let ampm = hours >= 12 ? 'பிற்பகல்' : 'காலை';
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
             
-            const timeString = `${ampm} ${hours}:${minutes}:${seconds}`;
-            const clockElement = document.getElementById('live-clock');
-            if(clockElement) {
-                clockElement.textContent = timeString;
+            let displayHours = hours % 12;
+            displayHours = displayHours ? displayHours : 12;
+            let displayMinutes = minutes < 10 ? '0' + minutes : minutes;
+            let displaySeconds = seconds < 10 ? '0' + seconds : seconds;
+            
+            const timeString = `${displayHours}:${displayMinutes}:${displaySeconds} ${ampm}`;
+            const clockEl = document.getElementById('live-clock');
+            if (clockEl) clockEl.textContent = timeString;
+        }
+
+        // Dark / Light Mode Switcher
+        function initTheme() {
+            const savedTheme = localStorage.getItem('adutha_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('theme-icon').textContent = 'light_mode';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('theme-icon').textContent = 'dark_mode';
             }
         }
-        setInterval(updateClock, 1000);
-        updateClock();
+
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.contains('dark');
+            if (isDark) {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('adutha_theme', 'light');
+                document.getElementById('theme-icon').textContent = 'dark_mode';
+                showToast('பகல் பயன்முறை (Light Mode) இயக்கப்பட்டது');
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('adutha_theme', 'dark');
+                document.getElementById('theme-icon').textContent = 'light_mode';
+                showToast('இரவு பயன்முறை (Dark Mode) இயக்கப்பட்டது');
+            }
+        }
+
+        // Font Size Adjuster
+        function changeFontSize(size) {
+            const mainContainer = document.getElementById('main-content-container');
+            if (!mainContainer) return;
+            mainContainer.classList.remove('font-scale-sm', 'font-scale-base', 'font-scale-lg');
+            if (size === 'sm') {
+                mainContainer.classList.add('font-scale-sm');
+                showToast('எழுத்து அளவு: சிறியது');
+            } else if (size === 'lg') {
+                mainContainer.classList.add('font-scale-lg');
+                showToast('எழுத்து அளவு: பெரியது');
+            } else {
+                mainContainer.classList.add('font-scale-base');
+                showToast('எழுத்து அளவு: இயல்பு');
+            }
+        }
+
+        // Article Modal Open / Close
+        let activeModalArticleId = 1;
+
+        function openArticleModal(id) {
+            const article = articlesDB[id] || articlesDB[1];
+            activeModalArticleId = article.id;
+            
+            document.getElementById('modal-article-title').textContent = article.title;
+            document.getElementById('modal-article-category').textContent = article.category;
+            document.getElementById('modal-article-time').textContent = article.time;
+            document.getElementById('modal-article-author').textContent = article.author;
+            document.getElementById('modal-article-img').src = article.img;
+            
+            const textContainer = document.getElementById('modal-article-text');
+            textContainer.innerHTML = '';
+            article.paragraphs.forEach(p => {
+                const pEl = document.createElement('p');
+                pEl.textContent = p;
+                textContainer.appendChild(pEl);
+            });
+
+            document.getElementById('article-reader-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArticleModal() {
+            document.getElementById('article-reader-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            if (window.speechSynthesis) window.speechSynthesis.cancel();
+            const speechBtn = document.getElementById('speech-btn');
+            if (speechBtn) speechBtn.classList.remove('bg-amber-500', 'text-slate-950');
+        }
+
+        // Text to speech simulation
+        let isSpeaking = false;
+        function playArticleSpeech() {
+            const article = articlesDB[activeModalArticleId];
+            if (!article) return;
+
+            if ('speechSynthesis' in window) {
+                if (isSpeaking) {
+                    window.speechSynthesis.cancel();
+                    isSpeaking = false;
+                    document.getElementById('speech-btn').classList.remove('bg-amber-500', 'text-slate-950');
+                    showToast('குரல் வாசிப்பு நிறுத்தப்பட்டது');
+                } else {
+                    const text = `${article.title}. ${article.paragraphs.join(' ')}`;
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'ta-IN';
+                    utterance.rate = 0.95;
+                    utterance.onend = () => {
+                        isSpeaking = false;
+                        document.getElementById('speech-btn').classList.remove('bg-amber-500', 'text-slate-950');
+                    };
+                    window.speechSynthesis.speak(utterance);
+                    isSpeaking = true;
+                    document.getElementById('speech-btn').classList.add('bg-amber-500', 'text-slate-950');
+                    showToast('AI குரல் வாசிப்பு தொடங்கப்பட்டது');
+                }
+            } else {
+                showToast('உங்கள் உலாவியில் குரல் வாசிப்பு வசதி கிடைக்கவில்லை');
+            }
+        }
+
+        function shareActiveModalArticle() {
+            const article = articlesDB[activeModalArticleId];
+            if (navigator.share) {
+                navigator.share({
+                    title: article.title,
+                    text: article.paragraphs[0],
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showToast('செய்தி இணைப்பு நகலெடுக்கப்பட்டது!');
+            }
+        }
+
+        function shareArticle(id, event) {
+            if (event) event.stopPropagation();
+            const article = articlesDB[id];
+            if (navigator.share) {
+                navigator.share({
+                    title: article.title,
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showToast('செய்தி இணைப்பு நகலெடுக்கப்பட்டது!');
+            }
+        }
+
+        // Bookmarks system
+        let savedBookmarks = JSON.parse(localStorage.getItem('adutha_bookmarks') || '[]');
+
+        function updateBookmarkBadge() {
+            const badge = document.getElementById('bookmark-count-badge');
+            if (badge) badge.textContent = savedBookmarks.length;
+            renderBookmarksList();
+        }
+
+        function bookmarkArticle(id, event) {
+            if (event) event.stopPropagation();
+            const index = savedBookmarks.indexOf(id);
+            if (index > -1) {
+                savedBookmarks.splice(index, 1);
+                showToast('செய்தி சேமிப்பிலிருந்து நீக்கப்பட்டது');
+            } else {
+                savedBookmarks.push(id);
+                showToast('செய்தி சேமிக்கப்பட்டது (Saved)!');
+            }
+            localStorage.setItem('adutha_bookmarks', JSON.stringify(savedBookmarks));
+            updateBookmarkBadge();
+        }
+
+        function toggleBookmarksDrawer() {
+            const drawer = document.getElementById('bookmarks-drawer');
+            if (drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+            } else {
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        function renderBookmarksList() {
+            const listEl = document.getElementById('bookmarks-list');
+            if (!listEl) return;
+            
+            if (savedBookmarks.length === 0) {
+                listEl.innerHTML = `
+                    <div class="text-center text-slate-400 py-12">
+                        <span class="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-700 block mb-2">bookmark_border</span>
+                        <p>நீங்கள் இதுவரை எந்த செய்தியையும் சேமிக்கவில்லை.</p>
+                        <p class="text-[11px] text-slate-500 mt-1">செய்தி அட்டைகளில் உள்ள சேமிப்பு பொத்தானைக் கிளிக் செய்யவும்.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            listEl.innerHTML = '';
+            savedBookmarks.forEach(id => {
+                const article = articlesDB[id];
+                if (!article) return;
+                const card = document.createElement('div');
+                card.className = 'p-3 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1.5 cursor-pointer hover:border-amber-400 transition';
+                card.onclick = () => {
+                    toggleBookmarksDrawer();
+                    openArticleModal(id);
+                };
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">${article.category}</span>
+                        <button onclick="bookmarkArticle(${id}, event)" class="text-red-500 hover:text-red-700" title="நீக்குக">
+                            <span class="material-symbols-outlined text-[15px]">delete</span>
+                        </button>
+                    </div>
+                    <h5 class="font-bold text-slate-800 dark:text-slate-100 line-clamp-2">${article.title}</h5>
+                    <span class="text-[10px] text-slate-400">${article.time}</span>
+                `;
+                listEl.appendChild(card);
+            });
+        }
+
+        // District filter functionality
+        function filterDistricts(district) {
+            document.querySelectorAll('.district-tab').forEach(btn => {
+                btn.classList.remove('bg-[#0a1945]', 'text-amber-400');
+                btn.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+            });
+            const activeBtn = document.querySelector(`[data-district="${district}"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                activeBtn.classList.add('bg-[#0a1945]', 'text-amber-400');
+            }
+
+            const items = document.querySelectorAll('.district-item');
+            items.forEach(item => {
+                if (district === 'all' || item.classList.contains(district)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Gold Rate Calculator Logic
+        let selectedKarat = 22;
+        const rate22k = 14185;
+        const rate24k = 15475;
+
+        function openGoldCalculatorModal() {
+            document.getElementById('gold-calculator-modal').classList.remove('hidden');
+            calculateGoldRate();
+        }
+
+        function closeGoldCalculatorModal() {
+            document.getElementById('gold-calculator-modal').classList.add('hidden');
+        }
+
+        function setCalcKarat(karat) {
+            selectedKarat = karat;
+            const btn22 = document.getElementById('calc-22k-btn');
+            const btn24 = document.getElementById('calc-24k-btn');
+            if (karat === 22) {
+                btn22.className = 'py-2 rounded-lg font-bold bg-amber-500 text-slate-950 border border-amber-600';
+                btn24.className = 'py-2 rounded-lg font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700';
+            } else {
+                btn24.className = 'py-2 rounded-lg font-bold bg-amber-500 text-slate-950 border border-amber-600';
+                btn22.className = 'py-2 rounded-lg font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700';
+            }
+            calculateGoldRate();
+        }
+
+        function setGrams(grams) {
+            document.getElementById('calc-grams-input').value = grams;
+            calculateGoldRate();
+        }
+
+        function calculateGoldRate() {
+            const grams = parseFloat(document.getElementById('calc-grams-input').value) || 0;
+            const makingPercent = parseFloat(document.getElementById('calc-making-input').value) || 0;
+            const ratePerGram = selectedKarat === 22 ? rate22k : rate24k;
+            
+            const basePrice = grams * ratePerGram;
+            const makingCharge = (basePrice * makingPercent) / 100;
+            const subtotal = basePrice + makingCharge;
+            const gst = (subtotal * 3) / 100;
+            const totalPrice = subtotal + gst;
+
+            document.getElementById('calc-base-price').textContent = `₹${Math.round(basePrice).toLocaleString('en-IN')}`;
+            document.getElementById('calc-making-charge').textContent = `₹${Math.round(makingCharge).toLocaleString('en-IN')}`;
+            document.getElementById('calc-gst').textContent = `₹${Math.round(gst).toLocaleString('en-IN')}`;
+            document.getElementById('calc-total-price').textContent = `₹${Math.round(totalPrice).toLocaleString('en-IN')}`;
+        }
+
+        // Rasi Palan Modal
+        const rasiList = [
+            { name: "மேஷம் (Aries)", desc: "தொழிலில் புதிய வாய்ப்புகள் உருவாகும். சுப விரயங்கள் உண்டாகும். குடும்பத்தில் மகிழ்ச்சி நிலவும்." },
+            { name: "ரிஷபம் (Taurus)", desc: "நிதி நிலைமை திருப்திகரமாக இருக்கும். வியாபாரத்தில் கூடுதல் லாபம் கிடைக்கும்." },
+            { name: "மிதுனம் (Gemini)", desc: "எடுத்த காரியங்களில் வெற்றி கிடைக்கும். நண்பர்கள் ஆதரவு மகிழ்ச்சி தரும்." },
+            { name: "கடகம் (Cancer)", desc: "உத்தியோகத்தில் புதிய பொறுப்புகள் வந்து சேரும். ஆரோக்கியத்தில் கவனம் தேவை." },
+            { name: "சிம்மம் (Leo)", desc: "தைரியமும் தன்னம்பிக்கையும் கூடும். சமூகத்தில் உங்கள் மதிப்பு உயரும்." },
+            { name: "கன்னி (Virgo)", desc: "திட்டமிட்ட காரியங்கள் திட்டமிட்டபடி நடக்கும். செலவுகளைக் கட்டுப்படுத்துவது நல்லது." },
+            { name: "துலாம் (Libra)", desc: "தொழில் கூட்டாளிகளுடன் இணக்கமான சூழல் நிலவும். சுபச் செய்திகள் வந்து சேரும்." },
+            { name: "விருச்சிகம் (Scorpio)", desc: "பணியிடத்தில் உங்கள் திறமைக்கு உரிய அங்கீகாரம் கிடைக்கும். அமைதி காப்பது நன்மை தரும்." },
+            { name: "தனுசு (Sagittarius)", desc: "பயணங்களால் நன்மைகள் ஏற்படும். ஆன்மிக ஈடுபாடு மன அமைதியைத் தரும்." },
+            { name: "மகரம் (Capricorn)", desc: "பொருளாதார வளர்ச்சி சீராக இருக்கும். குடும்பத்தினரின் தேவைகளை பூர்த்தி செய்வீர்கள்." },
+            { name: "கும்பம் (Aquarius)", desc: "புதிய முதலீடுகள் நல்ல பலன் தரும். சுப காரிய பேச்சுவார்த்தைகள் கைகூடும்." },
+            { name: "மீனம் (Pisces)", desc: "எதிர்பார்த்த தனவரவு உண்டாகும். பெரியவர்களின் ஆசி கிடைக்கும்." }
+        ];
+
+        function openRasiPalanModal() {
+            const grid = document.getElementById('rasi-palan-grid');
+            grid.innerHTML = '';
+            rasiList.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'bg-slate-50 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1';
+                el.innerHTML = `
+                    <h5 class="font-bold text-amber-700 dark:text-amber-400">${item.name}</h5>
+                    <p class="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">${item.desc}</p>
+                `;
+                grid.appendChild(el);
+            });
+            document.getElementById('rasi-palan-modal').classList.remove('hidden');
+        }
+
+        function closeRasiPalanModal() {
+            document.getElementById('rasi-palan-modal').classList.add('hidden');
+        }
+
+        // Epaper Modal
+        function openEpaperModal() {
+            document.getElementById('epaper-modal').classList.remove('hidden');
+        }
+
+        function closeEpaperModal() {
+            document.getElementById('epaper-modal').classList.add('hidden');
+        }
+
+        function downloadEpaperDemo() {
+            showToast('மின்-இதழ் பதிவிறக்கம் தொடங்கப்பட்டது (Demo PDF)');
+            closeEpaperModal();
+        }
+
+        // Video Player Modal
+        function openVideoPlayerModal(title, url) {
+            document.getElementById('video-modal-title').textContent = title;
+            document.getElementById('video-sim-title').textContent = title;
+            document.getElementById('video-player-modal').classList.remove('hidden');
+        }
+
+        function closeVideoPlayerModal() {
+            document.getElementById('video-player-modal').classList.add('hidden');
+        }
+
+        // Live AI Radio Simulation
+        function openLiveRadioModal() {
+            openArticleModal(1);
+            setTimeout(playArticleSpeech, 600);
+        }
+
+        // Poll voting
+        function submitVote(choice) {
+            document.getElementById('poll-options-container').classList.add('hidden');
+            document.getElementById('poll-results-container').classList.remove('hidden');
+            showToast('உங்கள் வாக்கு வெற்றிகரமாகப் பதிவானது!');
+        }
+
+        // Search Handlers
+        function handleSearch(e) {
+            if (e.key === 'Enter') triggerSearch();
+        }
+
+        function triggerSearch() {
+            const query = document.getElementById('site-search-input').value.trim();
+            if (!query) {
+                showToast('தயவுசெய்து தேட வேண்டிய சொல்லை உள்ளிடவும்');
+                return;
+            }
+            showToast(`"${query}" பற்றிய செய்திகள் தேடப்படுகின்றன...`);
+            // Quick match article
+            for (let id in articlesDB) {
+                if (articlesDB[id].title.includes(query) || articlesDB[id].category.includes(query)) {
+                    openArticleModal(id);
+                    return;
+                }
+            }
+            openArticleModal(1);
+        }
+
+        // Newsletter Handler
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('footer-email-input');
+            showToast(`${input.value} செய்திமடலில் வெற்றிகரமாக இணைக்கப்பட்டது!`);
+            input.value = '';
+        }
+
+        function openNewsletterModal() {
+            const email = prompt('உங்கள் மின்னஞ்சல் முகவரியை உள்ளிடவும்:');
+            if (email) {
+                showToast(`${email} செய்திமடலில் வெற்றிகரமாக இணைக்கப்பட்டது!`);
+            }
+        }
+
+        // Toast notifications
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'bg-[#0a1945] text-amber-300 px-4 py-2.5 rounded-xl border border-amber-400/40 shadow-2xl text-xs font-bold flex items-center gap-2 transform transition-all duration-300 opacity-0 translate-y-2 pointer-events-auto';
+            toast.innerHTML = `<span class="material-symbols-outlined text-[16px] text-amber-400">info</span> <span>${msg}</span>`;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-0', 'translate-y-2');
+                toast.classList.add('opacity-100', 'translate-y-0');
+            }, 50);
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        // Initialization
+        window.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            updateLiveTime();
+            setInterval(updateLiveTime, 1000);
+            startTickerTimer();
+            updateBookmarkBadge();
+        });
     </script>
 </body>
 </html>
